@@ -1,7 +1,9 @@
 import Link from "next/link";
 import prisma from "../../lib/db"
+import { unstable_noStore } from "next/cache";
 
 export default async function QSet() {
+  unstable_noStore()    // TODO remove this and use on-demand revalidation
   const questionSets = await prisma.questionSet.findMany()
   return (
     <ul>
