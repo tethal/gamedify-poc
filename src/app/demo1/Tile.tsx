@@ -8,7 +8,7 @@ interface TileProps {
   text: string;
 }
 
-const COLORS = ['#a0a0a0', '#c04040', '#4040c0']
+const COLORS = ['url(#f-gray)', 'url(#f-red)', 'url(#f-blue)']
 
 export default function Tile({ x, y, text }: TileProps) {
   const [color, setColor] = useState<number>(0);
