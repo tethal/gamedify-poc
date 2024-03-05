@@ -17,6 +17,7 @@ export default function RootLayout({
         <nav className="h-[2em]">
           <Link className="mx-2 underline" href="/">Home</Link>
           <Link className="mx-2 underline" href="/demo1">SVG Board demo</Link>
+          <Link className="mx-2 underline" href="/qset">DB demo</Link>
         </nav>
         {children}
       </body>
