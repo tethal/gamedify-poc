@@ -1,5 +1,4 @@
-import Link from "next/link";
-import prisma from "../../../lib/db"
+import prisma from "@/lib/db";
 import { notFound } from "next/navigation";
 
 export default async function QSet({ params }: { params: { id: string } }) {
