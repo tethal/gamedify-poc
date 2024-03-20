@@ -9,7 +9,7 @@ export default async function QSet() {
     <ul>
       {questionSets.map(qs => (
         <li key={qs.id}>
-          <Link className="underline" href={`/qset/${qs.id}`}>{qs.name}</Link>
+          <Link className="underline" href={`/qset/${qs.id}`}>{qs.name}</Link> - <Link className="underline" href={`/play/${qs.id}`}>PLAY</Link>
         </li>
       ))}
     </ul>
