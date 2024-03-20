@@ -10,7 +10,8 @@
     "migrate-dev": "dotenv -e .env.local -- prisma migrate dev",
     "migrate-reset": "dotenv -e .env.local -- prisma migrate reset",
     "db-seed": "dotenv -e .env.local -- prisma db seed",
-    "vercel-build": "prisma generate && prisma migrate deploy && next build"
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "test": "dotenv -e .env.local -- vitest"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -24,17 +25,21 @@
   },
   "devDependencies": {
     "@prisma/client": "^5.10.2",
+    "@testing-library/react": "^14.2.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.0.1",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8",
     "eslint-config-next": "14.1.1",
+    "jsdom": "^24.0.0",
     "postcss": "^8",
     "prisma": "^5.10.2",
     "tailwindcss": "^3.3.0",
     "tsx": "^4.7.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^1.4.0"
   }
 }
