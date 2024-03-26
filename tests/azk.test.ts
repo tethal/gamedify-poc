@@ -1,7 +1,28 @@
 import { describe, expect, it, test } from 'vitest'
 import { render, renderHook, screen } from '@testing-library/react'
-import { useAzkGame } from '@/components/azk/azk-hook'
+import { TileState, isWinningMove, useAzkGame } from '@/components/azk/azk-hook'
 import { act } from 'react-dom/test-utils';
+
+describe('AzkWinner', () => {
+  it('should detect a winning move', () => {
+    const tiles: TileState[] = [
+      /* */           "A",
+      /* */        "B", "A",
+      /* */      "B", "A", "B",
+      /* */   "B", "A", "B", "A"
+    ];
+    expect(isWinningMove(7, tiles)).toEqual(true);
+  });
+  it('should not detect a winning move', () => {
+    const tiles: TileState[] = [
+      /* */         "empty",
+      /* */        "B", "A",
+      /* */      "B", "A", "B",
+      /* */   "B", "A", "B", "A"
+    ];
+    expect(isWinningMove(7, tiles)).toEqual(false);
+  });
+});
 
 describe('AzkGame', () => {
   const { result } = renderHook(() => useAzkGame({

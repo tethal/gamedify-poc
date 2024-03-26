@@ -5,6 +5,35 @@ export type Player = "A" | "B";
 
 export type TileState = "empty" | Player;
 
+// TODO generate these from the board size
+const neighbors = [
+  [1, 2],
+  [0, 2, 3, 4], [0, 1, 4, 5],
+  [1, 4, 6, 7], [1, 2, 3, 5, 7, 8], [2, 4, 8, 9],
+  [3, 7], [3, 4, 6, 8], [4, 5, 7, 9], [5, 8]
+];
+
+const leftEdge = [0, 1, 3, 6];
+const rightEdge = [0, 2, 5, 9];
+const bottomEdge = [6, 7, 8, 9];
+
+export const isWinningMove = (selectedTileIndex: number, tiles: TileState[]) => {
+  // calculate the connected component of same-colored tiles containing the selected tile
+  const reachableTiles = new Set<number>();
+  const visit = (index: number) => {
+    if (tiles[index] === tiles[selectedTileIndex] && !reachableTiles.has(index)) {
+      reachableTiles.add(index);
+      neighbors[index].forEach(neighbor => visit(neighbor));
+    }
+  }
+  visit(selectedTileIndex);
+
+  // check if the reachable tiles include a tile from all three edges
+  const touchesEdge = (edge: number[]) => edge.some(tile => reachableTiles.has(tile));
+  return touchesEdge(leftEdge) && touchesEdge(rightEdge) && touchesEdge(bottomEdge);
+}
+
+
 export const useAzkGame = (gameData: AzkGameData) => {
   const [tiles, setTiles] = useState<TileState[]>(Array(10).fill("empty"));
 
@@ -38,8 +67,12 @@ export const useAzkGame = (gameData: AzkGameData) => {
     }
     // TODO tolerance for typos/diacritics/case 
     const isCorrect = answer == gameData.questions[selectedIndex].answer;
-    setTiles(tiles.map((state, index) => index === selectedIndex ? (isCorrect ? playerOnTurn : opponentOf(playerOnTurn)) : state));
-    // check if the player has won
+    const tileOwner = isCorrect ? playerOnTurn : opponentOf(playerOnTurn);
+    const newTiles = tiles.map((state, index) => index === selectedIndex ? tileOwner : state);
+    setTiles(newTiles);
+    if (isWinningMove(selectedIndex, newTiles)) {
+      setWinner(tileOwner);
+    }
     setSelectedIndex(null);
     setPlayerOnTurn(opponentOf(playerOnTurn));
     return isCorrect;
