@@ -2,7 +2,7 @@ import Tile from "./Tile";
 
 export default function Board() {
   return (
-    <svg className="h-[calc(100vh-2em)] w-screen bg-stone-600" viewBox="0 0 100 100">
+    <svg className="h-[calc(100vh-2em)] w-screen grid grid-cols-4" viewBox="0 0 100 100">
       <defs>
         <pattern id="f-gray" height="100%" width="100%" patternContentUnits="objectBoundingBox">
           <image height="1" width="1" preserveAspectRatio="none" href="/gray2.png" />
