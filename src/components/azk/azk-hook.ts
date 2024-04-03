@@ -82,7 +82,7 @@ export const useAzkGame = (gameData: AzkGameData) => {
     playerOnTurn,
     winner,
     currentQuestion,
-    tiles: [[0], [1, 2], [3, 4, 5], [6, 7, 8, 9]].map(row => row.map(index => { return { index, state: tiles[index] } })),
+    tileStates: tiles,
     selectTile,
     checkAnswer,
   }
