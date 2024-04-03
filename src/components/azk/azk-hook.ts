@@ -85,5 +85,6 @@ export const useAzkGame = (gameData: AzkGameData) => {
     tileStates: tiles,
     selectTile,
     checkAnswer,
+    selectedIndex
   }
 }
