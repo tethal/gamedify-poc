@@ -34,7 +34,7 @@ export default function AzkTile({
       onClick={() => onClick()}
     >
       <g
-        className='hover:scale-90 hover:transition-all duration-300 '
+        className='hover:scale-90 transition-all duration-300 '
         fill={COLORS[state]}
       >
         <polygon points={points} />

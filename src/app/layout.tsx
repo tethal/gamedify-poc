@@ -14,15 +14,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className='bg-zinc-950 text-white/70 flex flex-col items-center m-10 select-none'>
-        <nav className='h-[2em]'>
-          <Link className='mx-2 underline' href='/'>
+      <body className='bg-zinc-950 text-white/70 flex flex-col items-center  w-full min-h-screen select-none'>
+        <nav className='h-[2em] text-2xl flex items-center mt-4 justify-between gap-4 '>
+          <Link
+            className=' underline py-1.5 px-6 hover:text-emerald-900 hover:shadow-[0px_0px_10px_2px_#022C22] rounded-full'
+            href='/'
+          >
             Home
           </Link>
-          <Link className='mx-2 underline' href='/demo1'>
+          <Link
+            className=' underline py-1.5 px-6 hover:text-emerald-900 hover:shadow-[0px_0px_10px_2px_#022C22] rounded-full'
+            href='/demo1'
+          >
             SVG Board demo
           </Link>
-          <Link className='mx-2 underline' href='/qset'>
+          <Link
+            className=' underline py-1.5 px-6 hover:text-emerald-900 hover:shadow-[0px_0px_10px_2px_#022C22] rounded-full'
+            href='/qset'
+          >
             DB demo
           </Link>
           <Avatar />
