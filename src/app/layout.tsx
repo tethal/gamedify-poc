@@ -14,6 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <title>Document</title>
+      </head>
       <body className='bg-zinc-950 text-white/70 flex flex-col items-center  w-full min-h-screen select-none'>
         <nav className='h-[2em] text-2xl flex items-center mt-4 justify-between gap-4 '>
           <Link
