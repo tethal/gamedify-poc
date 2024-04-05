@@ -22,14 +22,14 @@ export default function AzkGame({ data }: { data: AzkGameData }) {
         tileStates={game.tileStates}
         onTileClicked={async index => await game.selectTile(index)}
       />
-      <div className='self-start mt-10 text-4xl p-6 space-y-4'>
+      <div className='absolute '>
         <p className=''>Player on turn: {game.playerOnTurn}</p>
         <p>Winner: {game.winner ?? '???'}</p>
         {/* IDEA: => confeti vo farbe vitaza */}
       </div>
       {game.currentQuestion && (
         <div
-          className={`fade-in absolute bg-zinc-950 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[20rem] flex flex-col gap-4 justify-center items-center py-16 px-6 rounded-2xl shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_${currentPlayerColor}]`}
+          className={`fade-in absolute bg-zinc-950 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[min(20rem,98%)] flex flex-col gap-4 justify-center items-center py-16 px-6 rounded-2xl shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_${currentPlayerColor}]`}
         >
           {/* IDEA: => namiesto shadowu dat borde, ktory sa postupne z farebneho bude menit na biely v zavislosti od uplynuteho casu
                     => po uplynuti casu bez odpovede alebo ked sa nestihne odpoved submitnut, okno sa automaticky zavrie a prideli bod superovi
