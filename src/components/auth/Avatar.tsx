@@ -15,7 +15,7 @@ export default async function Avatar() {
   } else {
     return (
       <Link
-        className='border px-6 py-1.5   rounded-full hover:text-emerald-900 hover:shadow-[0px_0px_10px_2px_#064E3B] hover:border-emerald-950 '
+        className='border px-6 py-1.5 rounded-full hover:text-emerald-900 hover:shadow-[0px_0px_10px_2px_#064E3B] hover:border-emerald-950 '
         href='/login'
       >
         log in

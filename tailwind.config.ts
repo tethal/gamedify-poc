@@ -7,22 +7,11 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   safelist: [
-    'bg-[#EB4457]',
-    'bg-[#2764EB]',
-    'hover:bg-[#c72436]',
-    'hover:bg-[#0444bd]',
-    'hover:text-[#EB4457]',
-    'hover:border-[#EB4457]',
-    'hover:border-[#2764EB]',
-    'hover:text-[#2764EB]',
-    'hover:text-[#c72436]',
-    'hover:border-[#c72436]',
-    'hover:border-[#0444bd]',
-    'hover:text-[#0444bd]',
-    'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#EB4457]',
-    'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#2764EB]',
-    'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#c72436]',
-    'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#0444bd]',
+    
+    'bg-[#01e32e]',
+    'bg-[#f3f400]',
+    'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#01e32e]',
+    'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#f3f400]'
   ],
   theme: {
     extend: {
