@@ -1,11 +1,10 @@
 import { useState } from 'react';
 
 interface FormProps {
-  game: any; /* ked som dala type object kricalo to na mna, moze ostat any?? */
+  game: any /* ked som dala type object kricalo to na mna, moze ostat any?? */;
 }
 
 const Form = ({ game }: FormProps) => {
- 
   const [answer, setAnswer] = useState('');
   const currentPlayerColor = game.playerOnTurn === 'A' ? '#f3f400' : '#01e32e';
   const currentPlayerColorHover =
