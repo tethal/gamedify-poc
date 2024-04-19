@@ -17,11 +17,7 @@ export default function AzkGame({ data }: { data: AzkGameData }) {
         onTileClicked={async index => await game.selectTile(index)}
       />
 
-      {game.currentQuestion && (
-        <Form
-          game={game}
-        />
-      )}
+      {game.currentQuestion && <Form game={game} />}
     </div>
   );
 }

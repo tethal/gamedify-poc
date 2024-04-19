@@ -16,6 +16,11 @@
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
+  "prettier": {
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "arrowParens": "avoid"
+  },
   "dependencies": {
     "@auth/prisma-adapter": "1.5.0",
     "next": "14.1.1",
@@ -36,6 +41,7 @@
     "eslint-config-next": "14.1.1",
     "jsdom": "^24.0.0",
     "postcss": "^8",
+    "prettier": "3.2.5",
     "prisma": "^5.10.2",
     "tailwindcss": "^3.3.0",
     "tsx": "^4.7.1",

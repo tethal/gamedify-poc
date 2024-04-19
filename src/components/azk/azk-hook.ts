@@ -25,7 +25,7 @@ const bottomEdge = [6, 7, 8, 9];
 
 export const isWinningMove = (
   selectedTileIndex: number,
-  tiles: TileState[]
+  tiles: TileState[],
 ) => {
   // calculate the connected component of same-colored tiles containing the selected tile
   const reachableTiles = new Set<number>();
@@ -61,7 +61,7 @@ export const useAzkGame = (gameData: AzkGameData) => {
 
   const selectedTile = (selectedIndex: number) => {
     const choosedTile = tiles.map((state, index) =>
-      index === selectedIndex ? 'selected' : state
+      index === selectedIndex ? 'selected' : state,
     );
     setTiles(choosedTile);
   };
@@ -92,7 +92,7 @@ export const useAzkGame = (gameData: AzkGameData) => {
     const isCorrect = answer == gameData.questions[selectedIndex].answer;
     const tileOwner = isCorrect ? playerOnTurn : opponentOf(playerOnTurn);
     const newTiles = tiles.map((state, index) =>
-      index === selectedIndex ? tileOwner : state
+      index === selectedIndex ? tileOwner : state,
     );
     setTiles(newTiles);
     if (isWinningMove(selectedIndex, newTiles)) {
