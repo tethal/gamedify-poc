@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { type AzkGameData } from '@/lib/fetch-game';
-import { TileState } from '@/components/azk/azk-hook'; /*tu som nieco rozbila, musim prist na to ako to opravit */
 
 export type Player = 'A' | 'B';
 
-export type TileState = 'empty' | 'choosed' | Player;
+export type TileState = 'empty' | 'selected' | Player;
 
 // TODO generate these from the board size
 const neighbors = [
@@ -62,7 +61,7 @@ export const useAzkGame = (gameData: AzkGameData) => {
 
   const selectedTile = (selectedIndex: number) => {
     const choosedTile = tiles.map((state, index) =>
-      index === selectedIndex ? 'choosed' : state
+      index === selectedIndex ? 'selected' : state
     );
     setTiles(choosedTile);
   };
@@ -82,12 +81,10 @@ export const useAzkGame = (gameData: AzkGameData) => {
     }
 
     setSelectedIndex(index);
-    selectedTile(index)
+    selectedTile(index);
   };
 
-   
   const checkAnswer = async (answer: string) => {
-   
     if (selectedIndex === null) {
       throw new Error('No tile selected');
     }
@@ -100,7 +97,9 @@ export const useAzkGame = (gameData: AzkGameData) => {
     setTiles(newTiles);
     if (isWinningMove(selectedIndex, newTiles)) {
       setWinner(tileOwner);
-       {/* IDEA: => confeti vo farbe vitaza */}
+      {
+        /* IDEA: => confeti vo farbe vitaza */
+      }
     }
     setSelectedIndex(null);
     setPlayerOnTurn(opponentOf(playerOnTurn));
