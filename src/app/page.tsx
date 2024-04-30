@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import QSet from './qset/page';
+import QSet from '@/components/qset/QSet';
 
 export default function Home() {
   return (
