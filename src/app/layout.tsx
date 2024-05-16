@@ -17,7 +17,7 @@ export default function RootLayout({
         <nav className='flex justify-end mt-4 max-w-7xl w-full'>
           <Avatar />
         </nav>
-        {children}
+        {children}   
       </body>
     </html>
   );
