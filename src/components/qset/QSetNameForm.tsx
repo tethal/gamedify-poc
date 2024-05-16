@@ -32,9 +32,9 @@ const QSetNameForm = ({ id, initialName, onClose }: QSetNameFormProps) => {
     });
   };
   return (
-    <form className='flex gap-2' action={save}>
+    <form className='flex gap-2 relative' action={save}>
       <input
-        className={'text-black'}
+        className={'text-black p-1.5 rounded-xl'}
         type='text'
         name='name'
         disabled={isPending}
@@ -43,7 +43,7 @@ const QSetNameForm = ({ id, initialName, onClose }: QSetNameFormProps) => {
       />
       <SaveButton disabled={isPending} />
       <CancelButton disabled={isPending} onClick={() => onClose(initialName)} />
-      <span>{isPending ? 'saving...' : error}</span>
+      {isPending && <span className='absolute bg-zinc-950 w-full p-4 top-0 left-0 text-center text-xl'>{isPending ? 'saving...' : error}</span>}
     </form>
   );
 };

@@ -3,6 +3,7 @@
  * @param disabled - whether the button is disabled, e.g. while saving
  * @param onClick - callback when the button is clicked
  */
+import { MdOutlineCancel } from 'react-icons/md';
 const CancelButton = ({
   disabled,
   onClick,
@@ -11,12 +12,12 @@ const CancelButton = ({
   onClick: () => void;
 }) => (
   <button
-    className='disabled:text-gray-800'
+    className='disabled:text-gray-800 ratio-square p-2 rounded-full hover:text-red-600 hover:shadow-[0px_0px_10px_2px_#DC2626] hover:border-red-600'
     type='button'
     disabled={disabled}
     onClick={onClick}
   >
-    Cancel
+    <MdOutlineCancel />
   </button>
 );
 
