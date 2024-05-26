@@ -27,7 +27,7 @@ const QSetNameView = ({ questionSet }: QSetNameViewProps) => {
     );
   }
   return (
-    <div className='flex gap-2'>
+    <div className='flex justify-between items-center w-[20rem] py-2 px-3 text-xl'>
       <span>{name}</span>
       <EditButton onClick={() => setEditing(true)} />
     </div>

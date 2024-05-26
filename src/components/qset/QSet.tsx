@@ -12,7 +12,7 @@ export default async function QSet() {
     },
   });
   return (
-    <ul>
+    <ul className='py-4 text-xl'>
       {questionSets.map(qs => (
         <li key={qs.id}>
           <Link className='underline' href={`/qset/${qs.id}`}>
