@@ -1,5 +1,4 @@
-import { calcPolygonVertices } from '@/lib/azk';
-import { type TileState } from '@/components/azk/azk-hook';
+import { COLORS, type TileState } from './defs';
 
 interface TileProps {
   x: number;
@@ -10,11 +9,21 @@ interface TileProps {
   onClick: () => any;
 }
 
-const COLORS: { [key in TileState]: string } = {
-  empty: '#A1A1AA',
-  selected: '#3F3F46',
-  A: '#f3f400',
-  B: '#01e32e',
+/**
+ * Calculate the vertices of a regular polygon.
+ * @param n the number of vertices
+ * @param size the radius of the polygon
+ * @param rotation the rotation of the polygon in degrees (0 means the first vertex is on the right)
+ */
+const calcPolygonVertices = (
+  n: number,
+  size: number,
+  rotation: number = 0,
+): { x: number; y: number }[] => {
+  return Array.from(Array(n), (_, i) => {
+    const angleRad = (Math.PI / 180) * ((360 * i) / n + rotation);
+    return { x: size * Math.cos(angleRad), y: size * Math.sin(angleRad) };
+  });
 };
 
 export default function AzkTile({

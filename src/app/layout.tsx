@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Avatar from '@/components/auth/Avatar';
+import Avatar from '@/app/Avatar';
 
 export const metadata: Metadata = {
   title: 'GamEdify PoC',
@@ -17,7 +17,7 @@ export default function RootLayout({
         <nav className='flex justify-end mt-4 max-w-7xl w-full'>
           <Avatar />
         </nav>
-        {children}   
+        {children}
       </body>
     </html>
   );

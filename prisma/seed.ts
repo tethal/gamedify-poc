@@ -1,38 +1,88 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 async function main() {
-  const set1 = await prisma.questionSet.upsert({
-    where: { name: 'Math' },
+  await prisma.quiz.upsert({
+    where: { code: '1234' },
     update: {},
     create: {
       name: 'Math',
+      code: '1234',
       questions: {
         create: [
-          { question: 'How much is 1 + 1?', answer: '2', },
-          { question: 'How much is 2 + 1?', answer: '3', },
-          { question: 'How much is 2 + 2?', answer: '4', },
-          { question: 'How much is 3 + 1?', answer: '4', },
-          { question: 'How much is 3 + 2?', answer: '5', },
-          { question: 'How much is 3 + 3?', answer: '6', },
-          { question: 'How much is 4 + 1?', answer: '5', },
-          { question: 'How much is 4 + 2?', answer: '6', },
-          { question: 'How much is 4 + 3?', answer: '7', },
-          { question: 'How much is 4 + 4?', answer: '8', },
+          {
+            question: 'How much is 1 + 1?',
+            answers: {
+              create: [{ answer: '2' }],
+            },
+          },
+          {
+            question: 'How much is 2 + 2?',
+            answers: {
+              create: [{ answer: '4' }],
+            },
+          },
+          {
+            question: 'How much is 3 + 3?',
+            answers: {
+              create: [{ answer: '6' }],
+            },
+          },
+          {
+            question: 'How much is 4 + 4?',
+            answers: {
+              create: [{ answer: '8' }],
+            },
+          },
+          {
+            question: 'How much is sqrt(9)?',
+            answers: {
+              create: [{ answer: '3' }, { answer: '-3' }],
+            },
+          },
+          {
+            question: 'How much is sqrt(16)?',
+            answers: {
+              create: [{ answer: '4' }, { answer: '-4' }],
+            },
+          },
+          {
+            question: 'How much is sqrt(-25)?',
+            answers: {
+              create: [{ answer: '5i' }, { answer: '-5i' }],
+            },
+          },
+          {
+            question: 'How much is 1 + 2 * 3?',
+            answers: {
+              create: [{ answer: '7' }],
+            },
+          },
+          {
+            question: 'How much is 1 * 2 + 3?',
+            answers: {
+              create: [{ answer: '5' }],
+            },
+          },
+          {
+            question: 'Is 9 prime?',
+            answers: {
+              create: [{ answer: 'no' }],
+            },
+          },
         ],
       },
     },
-  })
-  console.log({ set1 })
+  });
 }
 
 main()
   .then(async () => {
-    await prisma.$disconnect()
+    await prisma.$disconnect();
   })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+  .catch(async e => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
