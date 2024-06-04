@@ -15,7 +15,7 @@ import { simulateLatency } from '@/lib/util';
 const updateQuizName = async (id: number, name: string) => {
   await simulateLatency();
   if (name === '') {
-    throw new Error('Name cannot be empty');
+    return { error: 'Name cannot be empty' };
   }
   // TODO: ensure user is authorized to update this question set
   await prisma.quiz.update({

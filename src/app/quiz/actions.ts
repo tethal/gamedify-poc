@@ -2,13 +2,12 @@
 
 import prisma from '@/lib/db';
 import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 import { simulateLatency } from '@/lib/util';
 
 export async function createQuiz(name: string) {
   await simulateLatency();
   if (!name) {
-    throw Error('name is required');
+    return { error: 'name is required' };
   }
   const quiz = await prisma.quiz.create({
     data: {
@@ -16,7 +15,7 @@ export async function createQuiz(name: string) {
     },
   });
   revalidatePath('/quiz');
-  return quiz;
+  return { quiz };
 }
 
 export async function deleteQuiz(id: number) {

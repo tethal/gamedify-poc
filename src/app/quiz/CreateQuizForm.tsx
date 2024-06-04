@@ -12,8 +12,11 @@ export default function CreateQuizForm() {
   const [name, setName] = useState('');
   const router = useRouter();
   const { error, isPending, formAction } = useFormAction(async () => {
-    const quiz = await createQuiz(name);
-    router.push(`/quiz/${quiz.id}`);
+    const result = await createQuiz(name);
+    if (result.quiz) {
+      router.push(`/quiz/${result.quiz.id}`);
+    }
+    return result;
   });
 
   return (

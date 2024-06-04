@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState } from 'react';
 import { updateQuizName } from './actions';
 import SaveButton from '@/components/SaveButton';
 import CancelButton from '@/components/CancelButton';
@@ -23,8 +23,11 @@ interface QuizNameFormProps {
 const QuizNameForm = ({ id, initialName, onClose }: QuizNameFormProps) => {
   const [name, setName] = useState(initialName);
   const { error, isPending, formAction } = useFormAction(async () => {
-    await updateQuizName(id, name);
-    onClose();
+    const result = await updateQuizName(id, name);
+    if (!result?.error) {
+      onClose();
+    }
+    return result;
   });
 
   return (
