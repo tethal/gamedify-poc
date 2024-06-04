@@ -12,6 +12,8 @@ export function ensureNumber(id: string) {
 }
 
 export async function simulateLatency(ms: number = 1500) {
-  // TODO: remove artificial delay to simulate network latency
-  await new Promise(resolve => setTimeout(resolve, ms));
+  if (process.env.SIMULATE_LATENCY === 'true') {
+    // TODO: remove artificial delay to simulate network latency
+    await new Promise(resolve => setTimeout(resolve, ms));
+  }
 }
