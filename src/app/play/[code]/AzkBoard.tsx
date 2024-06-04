@@ -1,4 +1,14 @@
-export interface TileLayout {
+import { type TileState } from './defs';
+import AzkTile from './AzkTile';
+
+interface BoardProps {
+  tileSize: number;
+  tileStates: TileState[];
+  className?: string;
+  onTileClicked: (index: number) => void;
+}
+
+interface TileLayout {
   index: number; // the zero-based index of the tile
   q: number; // the horizontal component of the axial coordinates (from -r to 0)
   r: number; // the vertical component of the axial coordinates (from 0 to rows - 1)
@@ -6,7 +16,7 @@ export interface TileLayout {
   y: number; // the y coordinate in pixels
 }
 
-export interface BoardLayout {
+interface BoardLayout {
   tileWidth: number; // the width of a tile in pixels
   tileHeight: number; // the height of a tile in pixels
   boardMinX: number; // the minimum x coordinate of the board in pixels
@@ -20,7 +30,7 @@ const triangular = (n: number) => (n * (n + 1)) / 2;
 const triangularInverse = (n: number) =>
   Math.floor((Math.sqrt(1 + 8 * n + 1) - 1) / 2);
 
-export const createBoardLayout = (
+const createBoardLayout = (
   maxTileCount: number,
   tileSize: number,
 ): BoardLayout => {
@@ -57,19 +67,29 @@ export const createBoardLayout = (
   };
 };
 
-/**
- * Calculate the vertices of a regular polygon.
- * @param n the number of vertices
- * @param size the radius of the polygon
- * @param rotation the rotation of the polygon in degrees (0 means the first vertex is on the right)
- */
-export const calcPolygonVertices = (
-  n: number,
-  size: number,
-  rotation: number = 0,
-): { x: number; y: number }[] => {
-  return Array.from(Array(n), (_, i) => {
-    const angleRad = (Math.PI / 180) * ((360 * i) / n + rotation);
-    return { x: size * Math.cos(angleRad), y: size * Math.sin(angleRad) };
-  });
-};
+export default function AzkBoard({
+  tileSize,
+  tileStates,
+  className,
+  onTileClicked,
+}: BoardProps) {
+  const layout = createBoardLayout(tileStates.length, tileSize);
+  return (
+    <svg
+      className={className}
+      viewBox={`${layout.boardMinX} ${layout.boardMinY} ${layout.boardWidth} ${layout.boardHeight}`}
+    >
+      {layout.tiles.map(tile => (
+        <AzkTile
+          key={tile.index}
+          x={tile.x}
+          y={tile.y}
+          label={(tile.index + 1).toString()}
+          size={tileSize * 0.94}
+          state={tileStates[tile.index]}
+          onClick={() => onTileClicked(tile.index)}
+        />
+      ))}
+    </svg>
+  );
+}

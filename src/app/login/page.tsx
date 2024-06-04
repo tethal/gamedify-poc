@@ -1,5 +1,5 @@
 import { getServerSession } from 'next-auth';
-import SignWithGoogleButton from '@/components/auth/SignWithGoogleButton';
+import SignWithGoogleButton from './SignWithGoogleButton';
 import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 
