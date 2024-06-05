@@ -1,11 +1,12 @@
 import QuizList from './QuizList';
-import CreateQuizForm from './CreateQuizForm';
+import TextAddForm from '@/components/TextAddForm';
+import { createQuiz } from './actions';
 
 export default function QuizzesPage() {
   return (
     <>
       <QuizList />
-      <CreateQuizForm />
+      <TextAddForm label='Create a new quiz' action={createQuiz} args={{}} />
     </>
   );
 }

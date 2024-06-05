@@ -1,37 +1,46 @@
 'use client';
 
-import { createQuiz } from './actions';
 import useFormAction from '@/hooks/useFormAction';
 import SaveButton from '@/components/SaveButton';
 import Input from '@/components/Input';
 import Saving from '@/components/Saving';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
-export default function CreateQuizForm() {
-  const [name, setName] = useState('');
-  const router = useRouter();
+interface TextAddFormProps<T> {
+  label: string;
+  action: (
+    newValue: string,
+    args: T,
+  ) => Promise<{ error?: string } | undefined>;
+  args: T;
+}
+
+const TextAddForm = <T extends any>({
+  label,
+  action,
+  args,
+}: TextAddFormProps<T>) => {
+  const [text, setText] = useState('');
   const { error, isPending, formAction } = useFormAction(async () => {
-    const result = await createQuiz(name);
-    if (result.quiz) {
-      router.push(`/quiz/${result.quiz.id}`);
+    const result = await action(text, args);
+    if (!result?.error) {
+      setText('');
     }
     return result;
   });
 
   return (
     <div>
-      <h1 className='pb-4 text-2xl'>Create a new quiz</h1>
       <form onSubmit={formAction}>
         <div className='flex gap-2 items-center'>
-          <label htmlFor='name'>Quiz name:</label>
+          <label htmlFor='name'>{label}</label>
           <Input
             type='text'
             id='name'
             name='name'
             disabled={isPending}
-            value={name}
-            onChange={e => setName(e.target.value)}
+            value={text}
+            onChange={e => setText(e.target.value)}
           />
           {isPending ? <Saving /> : <SaveButton />}
         </div>
@@ -39,4 +48,5 @@ export default function CreateQuizForm() {
       </form>
     </div>
   );
-}
+};
+export default TextAddForm;

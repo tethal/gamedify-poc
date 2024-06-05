@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Avatar from '@/app/Avatar';
+import Avatar from './Avatar';
 
 export const metadata: Metadata = {
   title: 'GamEdify PoC',

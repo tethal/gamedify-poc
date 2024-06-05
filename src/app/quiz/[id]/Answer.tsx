@@ -1,38 +1,36 @@
 'use client';
 import { useState } from 'react';
 import EditButton from '@/components/EditButton';
+import DeleteButton from '@/components/DeleteButton';
+import { deleteAnswer, updateAnswer } from './actions';
 import TextEditForm from '@/components/TextEditForm';
-import { updateQuizName } from './actions';
 
-interface QuizNameViewProps {
+interface AnswerProps {
+  quizId: number;
   id: number;
-  name: string;
+  answer: string;
 }
 
-/**
- * Display the name of a quiz, with a pencil icon to switch to edit mode.
- * @param quiz the quiz to display
- */
-const QuizName = ({ id, name }: QuizNameViewProps) => {
+const Answer = ({ quizId, id, answer }: AnswerProps) => {
   const [editing, setEditing] = useState(false);
   return (
     <>
-      <h2>Quiz name:</h2>
       {editing ? (
         <TextEditForm
-          initialText={name}
+          initialText={answer}
           onClose={() => setEditing(false)}
-          action={updateQuizName}
-          args={{ id }}
+          action={updateAnswer}
+          args={{ quizId, id }}
         />
       ) : (
         <div className='flex justify-between items-center w-[20rem] py-2 px-3 text-xl'>
-          <span>{name}</span>
+          <span className='grow'>{answer}</span>
           <EditButton onClick={() => setEditing(true)} />
+          <DeleteButton action={deleteAnswer} args={{ id, quizId }} />
         </div>
       )}
     </>
   );
 };
 
-export default QuizName;
+export default Answer;
