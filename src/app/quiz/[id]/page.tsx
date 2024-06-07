@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import QuizName from './QuizName';
 import { ensureNumber } from '@/lib/util';
 import Link from 'next/link';
+import QuizCode from './QuizCode';
+import QuestionList from './QuestionList';
 
 export default async function QuizPage({ params }: { params: { id: string } }) {
   const quiz = await prisma.quiz.findUnique({
@@ -15,15 +17,14 @@ export default async function QuizPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <Link href='/quiz'>Back to list</Link>
-      <QuizName {...quiz} />
-      <ul>
-        {quiz.questions.map(q => (
-          <li key={q.id}>
-            Q: {q.question} ... A: {q.answers.map(a => a.answer).join('|')}
-          </li>
-        ))}
-      </ul>
+      <div className='flex flex-col'>
+        <Link className='underline' href='/quiz'>
+          Back to list
+        </Link>
+        <QuizName {...quiz} />
+        <QuizCode {...quiz} />
+        <QuestionList quizId={quiz.id} questions={quiz.questions} />
+      </div>
     </>
   );
 }

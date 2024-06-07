@@ -2,25 +2,32 @@
 
 import prisma from '@/lib/db';
 import { revalidatePath } from 'next/cache';
-import { simulateLatency } from '@/lib/util';
+import { convertDbError, simulateLatency } from '@/lib/util';
 
-export async function createQuiz(name: string) {
+export async function createQuiz(name: string, {}: {}) {
   await simulateLatency();
   if (!name) {
     return { error: 'name is required' };
   }
-  const quiz = await prisma.quiz.create({
-    data: {
-      name,
-    },
-  });
+  try {
+    await prisma.quiz.create({
+      data: {
+        name,
+      },
+    });
+  } catch (e) {
+    return convertDbError(e);
+  }
   revalidatePath('/quiz');
-  return { quiz };
 }
 
-export async function deleteQuiz(id: number) {
-  await prisma.quiz.delete({
-    where: { id },
-  });
+export async function deleteQuiz({ id }: { id: number }) {
+  try {
+    await prisma.quiz.delete({
+      where: { id },
+    });
+  } catch (e) {
+    return convertDbError(e);
+  }
   revalidatePath('/');
 }

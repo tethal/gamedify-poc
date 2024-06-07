@@ -3,7 +3,7 @@ import prisma from '@/lib/db';
 import { deleteQuiz } from './actions';
 import DeleteButton from '@/components/DeleteButton';
 import EditButton from '@/components/EditButton';
-import { MdAdd, MdClose, MdPlayArrow } from 'react-icons/md';
+import { MdPlayArrow } from 'react-icons/md';
 import IconButton from '@/components/IconButton';
 
 export default async function QuizList() {
@@ -35,7 +35,7 @@ export default async function QuizList() {
               <Link href={`/quiz/${quiz.id}`}>
                 <EditButton />
               </Link>
-              <DeleteButton action={deleteQuiz} idArg={quiz.id} />
+              <DeleteButton action={deleteQuiz} args={{ id: quiz.id }} />
               {quiz.code && (
                 <Link className='underline' href={`/play/${quiz.code}`}>
                   <IconButton color='green'>

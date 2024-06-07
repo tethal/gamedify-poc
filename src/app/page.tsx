@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import EnterQuizCodeForm from '@/app/EnterQuizCodeForm';
+import EnterQuizCodeForm from './EnterQuizCodeForm';
 
 export default function Home() {
   return (

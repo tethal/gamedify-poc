@@ -1,29 +1,33 @@
 'use client';
 
 import { useState } from 'react';
-import { updateQuizName } from './actions';
 import SaveButton from '@/components/SaveButton';
 import CancelButton from '@/components/CancelButton';
 import Input from '@/components/Input';
 import Saving from '@/components/Saving';
 import useFormAction from '@/hooks/useFormAction';
 
-interface QuizNameFormProps {
-  id: number;
-  initialName: string;
+interface TextEditFormProps<T> {
+  initialText: string;
+  type?: 'text' | 'number';
   onClose: () => void;
+  action: (
+    newValue: string,
+    args: T,
+  ) => Promise<{ error?: string } | undefined>;
+  args: T;
 }
 
-/**
- * A form for editing the name of a quiz.
- * @param id the id of the quiz
- * @param initialName the initial name of the quiz
- * @param onClose callback when the form is closed
- */
-const QuizNameForm = ({ id, initialName, onClose }: QuizNameFormProps) => {
-  const [name, setName] = useState(initialName);
+const TextEditForm = <T extends any>({
+  initialText,
+  type,
+  onClose,
+  action,
+  args,
+}: TextEditFormProps<T>) => {
+  const [text, setText] = useState(initialText);
   const { error, isPending, formAction } = useFormAction(async () => {
-    const result = await updateQuizName(id, name);
+    const result = await action(text, args);
     if (!result?.error) {
       onClose();
     }
@@ -34,11 +38,11 @@ const QuizNameForm = ({ id, initialName, onClose }: QuizNameFormProps) => {
     <form className='flex gap-2 relative' onSubmit={formAction}>
       <Input
         className={'text-black p-1.5 rounded-xl'}
-        type='text'
+        type={type || 'text'}
         name='name'
-        value={name}
+        value={text}
         disabled={isPending}
-        onChange={e => setName(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
       {isPending ? (
         <Saving />
@@ -53,4 +57,4 @@ const QuizNameForm = ({ id, initialName, onClose }: QuizNameFormProps) => {
   );
 };
 
-export default QuizNameForm;
+export default TextEditForm;
