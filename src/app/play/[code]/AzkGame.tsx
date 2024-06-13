@@ -4,15 +4,34 @@ import { type Question } from './defs';
 import useAzkGameState from './useAzkGameState';
 import AzkBoard from './AzkBoard';
 import Form from './Form';
+import { COLORS, type Player } from './defs';
+import { useWindowSize } from 'react-use';
+import Confetti from 'react-confetti';
 
-export default function AzkGame({ questions }: { questions: Question[] }) {
+export default function AzkGame({
+  questions,
+  playerOnTurn,
+}: {
+  questions: Question[];
+  playerOnTurn: Player;
+}) {
   const gameState = useAzkGameState(questions);
+  const { width, height } = useWindowSize(); {/*TODO: skontrolovat ci to je dobre, pripadne prepisat do typescriptu */}
+
+  console.log(gameState.winner)
 
   return (
     <div className='flex justify-center lg:justify-between p-6 gap-10 items-center w-[min(1200px,98%)]'>
+      {gameState.winner && <Confetti
+        width={width}
+        height={height}
+        colors={[gameState.winner ? `${COLORS[gameState.winner]}` : `#09090B`]}
+      />}
       <div className='relative flex w-2/3'>
         {gameState.playerOnTurn === 'A' && (
-          <div className=' hidden lg:flex absolute top-0 left-0 bg-[#f3f400] w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl'>
+          <div
+            className={`hidden lg:flex absolute top-0 left-0 bg-${COLORS[gameState.playerOnTurn]} w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl`}
+          >
             Player {gameState.playerOnTurn}
           </div>
         )}
@@ -23,7 +42,9 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
           onTileClicked={async index => await gameState.selectTile(index)}
         />
         {gameState.playerOnTurn === 'B' && (
-          <div className='hidden lg:flex absolute top-0 right-0 bg-[#01e32e] w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl'>
+          <div
+            className={`hidden lg:flex absolute top-0 right-0 bg-${COLORS[gameState.playerOnTurn]} w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl`}
+          >
             Player {gameState.playerOnTurn}
           </div>
         )}
