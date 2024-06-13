@@ -22,15 +22,17 @@ export default function AzkGame({
 
   return (
     <div className='flex justify-center lg:justify-between p-6 gap-10 items-center w-[min(1200px,98%)]'>
-      {gameState.winner && <Confetti
-        width={width}
-        height={height}
-        colors={[gameState.winner && `${COLORS[gameState.winner]}`]}
-      />}
+      {gameState.winner && (
+        <Confetti
+          width={width}
+          height={height}
+          colors={[gameState.winner && `${COLORS[gameState.winner]}`]}
+        />
+      )}
       <div className='relative flex w-2/3'>
         {gameState.playerOnTurn === 'A' && (
           <div
-            className={`hidden lg:flex absolute top-0 left-0 bg-${COLORS[gameState.playerOnTurn]} w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl`}
+            className={`hidden lg:flex absolute top-0 left-0  bg-[${COLORS[gameState.playerOnTurn]}]  w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl`}
           >
             Player {gameState.playerOnTurn}
           </div>
@@ -43,7 +45,7 @@ export default function AzkGame({
         />
         {gameState.playerOnTurn === 'B' && (
           <div
-            className={`hidden lg:flex absolute top-0 right-0 bg-${COLORS[gameState.playerOnTurn]} w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl`}
+            className={`hidden lg:flex absolute top-0 right-0  bg-[${COLORS[gameState.playerOnTurn]}] w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl`}
           >
             Player {gameState.playerOnTurn}
           </div>
