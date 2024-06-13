@@ -25,7 +25,7 @@ export default function AzkGame({
       {gameState.winner && <Confetti
         width={width}
         height={height}
-        colors={[gameState.winner ? `${COLORS[gameState.winner]}` : `#09090B`]}
+        colors={[gameState.winner && `${COLORS[gameState.winner]}`]}
       />}
       <div className='relative flex w-2/3'>
         {gameState.playerOnTurn === 'A' && (
