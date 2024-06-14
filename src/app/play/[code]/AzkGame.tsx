@@ -21,7 +21,7 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
         <Confetti
           width={width}
           height={height}
-          colors={[gameState.winner && `${COLORS[gameState.winner]}`]}
+          colors={[`${COLORS[gameState.winner]}`]}
         />
       )}
       <div className='relative flex w-2/3'>

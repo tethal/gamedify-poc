@@ -10,11 +10,17 @@ const config: Config = {
     'bg-[#f3f400]',
     'bg-[#1f51ff]',
     'text-[#f3f400]',
+    'hover:text-[#f3f400]',
     'text-[#1f51ff]',
+    'hover:text-[#1f51ff]',
     'border-[#f3f400]',
+    'hover:border-[#f3f400]',
     'border-[#1f51ff]',
+    'hover:border-[#1f51ff]',
     'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#f3f400]',
+    'hover:shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#f3f400]',
     'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#1f51ff]',
+    'hover:shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#1f51ff]',
   ],
   theme: {
     extend: {
