@@ -8,17 +8,12 @@ import { COLORS, type Player } from './defs';
 import { useWindowSize } from 'react-use';
 import Confetti from 'react-confetti';
 
-export default function AzkGame({
-  questions,
-  playerOnTurn,
-}: {
-  questions: Question[];
-  playerOnTurn: Player;
-}) {
+export default function AzkGame({ questions }: { questions: Question[] }) {
   const gameState = useAzkGameState(questions);
-  const { width, height } = useWindowSize(); {/*TODO: skontrolovat ci to je dobre, pripadne prepisat do typescriptu */}
-
-  console.log(gameState.winner)
+  const { width, height } = useWindowSize();
+  {
+    /*TODO: skontrolovat ci to je dobre, pripadne prepisat do typescriptu */
+  }
 
   return (
     <div className='flex justify-center lg:justify-between p-6 gap-10 items-center w-[min(1200px,98%)]'>
@@ -30,7 +25,7 @@ export default function AzkGame({
         />
       )}
       <div className='relative flex w-2/3'>
-        {gameState.playerOnTurn === 'A' && (
+        {(gameState.playerOnTurn === 'A' && !gameState.winner) && (
           <div
             className={`hidden lg:flex absolute top-0 left-0  bg-[${COLORS[gameState.playerOnTurn]}]  w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl`}
           >
@@ -43,7 +38,7 @@ export default function AzkGame({
           tileStates={gameState.tileStates}
           onTileClicked={async index => await gameState.selectTile(index)}
         />
-        {gameState.playerOnTurn === 'B' && (
+        {(gameState.playerOnTurn === 'B' && !gameState.winner) &&  (
           <div
             className={`hidden lg:flex absolute top-0 right-0  bg-[${COLORS[gameState.playerOnTurn]}] w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl`}
           >
