@@ -18,6 +18,7 @@ const config: Config = {
     'shadow-[0px_0px_10px_5px_#f3f400]',
     'hover:shadow-[0px_0px_10px_5px_#f3f400]',
     'shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_#f3f400]',
+    ' hover:shadow-[0px_0px_10px_2px_#f3f400]',
 
     //player B
     'bg-[#1f51ff]',
@@ -30,6 +31,7 @@ const config: Config = {
     'shadow-[0px_0px_10px_5px_#1f51ff]',
     'hover:shadow-[0px_0px_10px_5px_#1f51ff]',
     'shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_#1f51ff]',
+    ' hover:shadow-[0px_0px_10px_2px_#1f51ff]',
   ],
   theme: {
     extend: {
