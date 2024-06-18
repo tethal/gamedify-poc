@@ -33,7 +33,7 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
             won this game
             <Link
               href='/'
-              className={`flex items-center justify-center  px-6 py-1.5 border rounded-full mt-4`}
+              className={`flex items-center justify-center  px-6 py-1.5 border rounded-full mt-4 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:border-cyan-950`}
             >
               Play again?
               <AiOutlineRedo />
@@ -71,7 +71,6 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
             tileLabel={(gameState.selectedIndex + 1).toString()}
             question={gameState.currentQuestion}
             submitAnswer={gameState.checkAnswer}
-            className='pt-20'
           />
         )}
       </div>
