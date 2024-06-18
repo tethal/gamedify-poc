@@ -34,6 +34,7 @@ const Form = ({
         type='text'
         placeholder='Type an answer'
         onChange={e => setAnswer(e.target.value)}
+        autoFocus
       />
       <button
         className={`border rounded-full px-6 py-1.5 text-xl  hover:text-[${COLORS[playerOnTurn]}] hover:border-[${COLORS[playerOnTurn]}]  hover:shadow-[0px_0px_10px_5px_${COLORS[playerOnTurn]}] `}

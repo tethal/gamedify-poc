@@ -18,7 +18,7 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
   }
 
   return (
-    <div className='flex justify-center lg:justify-between p-6 gap-10 items-center w-[min(1200px,98%)] relative'>
+    <div className='flex justify-center lg:justify-between p-6 gap-10 items-center w-[min(1200px,98%)] relative '>
       {gameState.winner && (
         <>
           <Confetti
@@ -27,12 +27,12 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
             colors={[`${COLORS[gameState.winner]}`]}
           />
           <div className='bg-zinc-950 absolute transform -translate-x-1/2 -translate-y-1/2 border top-1/2 left-1/2 p-10 py-24 w-[min(26rem,98%)] z-20 text-center text-2xl rounded-xl flex flex-col items-center justify-center '>
-            Player {gameState.winner} won this game
+            <span className={`text-[${COLORS[gameState.winner]}]`}>Player {gameState.winner}</span> won this game
             <Link
               href='/'
-              className={`flex flex-col items-center hover:text-[${COLORS[gameState.winner]}]`}
+              className={`flex items-center justify-center  px-6 py-1.5 border rounded-full mt-4`}
             >
-              Do you want to play again?
+              Play again?
               <AiOutlineRedo />
             </Link>
           </div>

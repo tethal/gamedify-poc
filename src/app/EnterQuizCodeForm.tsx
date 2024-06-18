@@ -22,6 +22,7 @@ export default function EnterQuizCodeForm() {
           router.push(`/play/${code}`);
         }
       }}
+      className='flex gap-6 items-center text-2xl'
     >
       <label htmlFor='code'>Quiz code:</label>
       <Input
@@ -32,8 +33,11 @@ export default function EnterQuizCodeForm() {
         onChange={e => {
           setCode(e.target.value);
         }}
+        autoFocus
       />
-      <button type='submit'>Play</button>
+      <button type='submit' className='border px-6 py-1.5 rounded-full '>
+        Play
+      </button>
     </form>
   );
 }
