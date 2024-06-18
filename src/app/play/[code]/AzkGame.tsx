@@ -41,8 +41,8 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
           </div>
         </>
       )}
-      <div className='flex justify-center lg:justify-between p-6 gap-10 lg:items-center w-[min(1200px,98%)] relative '>
-        <div className='relative flex w-full lg:w-2/3'>
+      <div className='flex justify-center lg:justify-between p-6 gap-10 items-center w-[min(1200px,98%)] relative '>
+        <div className='relative w-full h-full lg:w-2/3'>
           {gameState.playerOnTurn === 'A' && !gameState.winner && (
             <div
               className={`hidden lg:flex absolute top-0 left-0  bg-[${COLORS[gameState.playerOnTurn]}] shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_${COLORS[gameState.playerOnTurn]}] w-fit aspect-auto py-2 px-6 text-[#27272A] rounded-xl font-bold text-2xl`}
@@ -51,7 +51,7 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
             </div>
           )}
           <AzkBoard
-            className='min-h-screen h-full pb-10 border'
+            className='h-full'
             tileSize={10}
             tileStates={gameState.tileStates}
             onTileClicked={async index => await gameState.selectTile(index)}
