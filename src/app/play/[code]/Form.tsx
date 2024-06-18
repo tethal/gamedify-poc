@@ -26,7 +26,7 @@ const Form = ({
     >
       <p className='bg-gray-700 size-14 text-2xl flex justify-center items-center font-bold lg:hidden'>
         {tileLabel}
-      </p>{' '}
+      </p>
       {/*TODO: dat do tvaru polygonu*/}
       <h2 className='text-2xl p-0'>{question}</h2>
       <input
@@ -39,7 +39,7 @@ const Form = ({
       <button
         className={`border rounded-full px-6 py-1.5 text-xl  hover:text-[${COLORS[playerOnTurn]}] hover:border-[${COLORS[playerOnTurn]}]  hover:shadow-[0px_0px_10px_5px_${COLORS[playerOnTurn]}] `}
       >
-        Submit {/* TODO: translate to czech - Odpovedet ?  */}
+        Submit {/* TODO: translate to czech - Odpovedet ?, pripadne spravit celu hru v troch jazykovych permutaciach CZ/SK/EN */}
       </button>
     </form>
   );
