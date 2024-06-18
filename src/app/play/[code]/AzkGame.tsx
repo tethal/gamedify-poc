@@ -30,10 +30,9 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
             Player {gameState.winner} won this game
             <Link
               href='/'
-              // className={`shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_${COLORS[gameState.winner]}] `}
               className={`flex flex-col items-center hover:text-[${COLORS[gameState.winner]}]`}
             >
-              Do you wanna play again?
+              Do you want to play again?
               <AiOutlineRedo />
             </Link>
           </div>
