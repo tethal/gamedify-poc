@@ -40,7 +40,7 @@ export default function EnterQuizCodeForm() {
         />
         <span className='text-lg absolute -bottom-7 left-0 flex pl-2 gap-1'>
           <FaStarOfLife className='text-[8px] mt-[4px] ' />
-          Please enter code of game
+          Please enter quiz code
         </span>
       </div>
 
