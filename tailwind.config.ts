@@ -7,6 +7,7 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   safelist: [
+    //player A
     'bg-[#f3f400]',
     'text-[#f3f400]',
     'hover:text-[#f3f400]',
@@ -16,7 +17,9 @@ const config: Config = {
     'hover:shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#f3f400]',
     'shadow-[0px_0px_10px_5px_#f3f400]',
     'hover:shadow-[0px_0px_10px_5px_#f3f400]',
+    'shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_#f3f400]',
 
+    //player B
     'bg-[#1f51ff]',
     'text-[#1f51ff]',
     'hover:text-[#1f51ff]',
@@ -26,6 +29,7 @@ const config: Config = {
     'hover:shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#1f51ff]',
     'shadow-[0px_0px_10px_5px_#1f51ff]',
     'hover:shadow-[0px_0px_10px_5px_#1f51ff]',
+    'shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_#1f51ff]',
   ],
   theme: {
     extend: {
