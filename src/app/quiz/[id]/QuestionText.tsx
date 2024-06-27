@@ -4,15 +4,23 @@ import EditButton from '@/components/EditButton';
 import DeleteButton from '@/components/DeleteButton';
 import { deleteQuestion, updateQuestion } from './actions';
 import TextEditForm from '@/components/TextEditForm';
+import { MdArrowDropDown, MdArrowRight } from 'react-icons/md';
 
 interface QuestionTextProps {
   quizId: number;
   id: number;
   question: string;
+  expanded: boolean;
   expand: () => void;
 }
 
-const QuestionText = ({ quizId, id, question, expand }: QuestionTextProps) => {
+const QuestionText = ({
+  quizId,
+  id,
+  question,
+  expanded,
+  expand,
+}: QuestionTextProps) => {
   const [editing, setEditing] = useState(false);
   return (
     <>
@@ -24,7 +32,8 @@ const QuestionText = ({ quizId, id, question, expand }: QuestionTextProps) => {
           args={{ id, quizId }}
         />
       ) : (
-        <div className='flex justify-between items-center w-[20rem] py-2 px-3 text-xl'>
+        <div className='flex justify-between items-center py-2 px-3 text-xl'>
+          {expanded ? <MdArrowDropDown /> : <MdArrowRight />}
           <span className='grow cursor-pointer' onClick={expand}>
             {question}
           </span>

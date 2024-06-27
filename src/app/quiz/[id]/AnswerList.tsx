@@ -15,7 +15,7 @@ export default function AnswerList({
 }: AnswerListProps) {
   return (
     <>
-      <ul className='ml-8'>
+      <ul className='ml-20'>
         {answers.map(a => (
           <li key={a.id}>
             <Answer quizId={quizId} id={a.id} answer={a.answer} />

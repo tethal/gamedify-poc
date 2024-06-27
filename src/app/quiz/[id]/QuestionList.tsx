@@ -21,7 +21,7 @@ export default function QuestionList({ quizId, questions }: QuestionListProps) {
             key={q.id}
             quizId={quizId}
             expanded={expandedId == q.id}
-            expand={() => setExpandedId(q.id)}
+            expand={() => setExpandedId(expandedId == q.id ? null : q.id)}
             {...q}
           />
         ))}

@@ -21,6 +21,7 @@ export default function Question({
         quizId={quizId}
         id={id}
         question={question}
+        expanded={expanded}
         expand={expand}
       />
       {expanded && (
