@@ -20,6 +20,8 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
   }
 
 
+  const pathname = usePathname();
+
   return (
     <>
       {gameState.winner && (
@@ -35,7 +37,7 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
             </span>
             won this game
             <Link
-              href={`${usePathname()}`}
+              href={`${pathname}`}
               className={`flex items-center justify-center gap-2  px-6 py-1.5 border rounded-full mt-4 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:border-cyan-950`}
             >
               <AiOutlineRedo className='text-4xl' />
