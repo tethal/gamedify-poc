@@ -39,7 +39,6 @@ const Form = ({
       />
       <button
         className={`border rounded-full px-6 py-1.5 text-xl  hover:text-[${COLORS[playerOnTurn]}] hover:border-[${COLORS[playerOnTurn]}]  hover:shadow-[0px_0px_10px_2px_${COLORS[playerOnTurn]}] `}
-        // className={`border px-6 py-1.5 rounded-full mt-10 md:mt-0 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:border-cyan-950`}
       >
         Submit
         {/* TODO: translate to czech - Odpovedet ?, pripadne spravit celu hru v troch jazykovych permutaciach CZ/SK/EN */}
