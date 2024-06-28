@@ -19,7 +19,6 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
     /*TODO: skontrolovat ci to je dobre, pripadne prepisat do typescriptu */
   }
 
-
   const pathname = usePathname();
 
   return (
