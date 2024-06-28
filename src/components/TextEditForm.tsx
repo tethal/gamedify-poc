@@ -42,6 +42,7 @@ const TextEditForm = <T extends any>({
         name='name'
         value={text}
         disabled={isPending}
+        size={50}
         onChange={e => setText(e.target.value)}
       />
       {isPending ? (

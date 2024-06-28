@@ -23,7 +23,7 @@ const Answer = ({ quizId, id, answer }: AnswerProps) => {
           args={{ quizId, id }}
         />
       ) : (
-        <div className='flex justify-between items-center w-[20rem] py-2 px-3 text-xl'>
+        <div className='flex justify-between items-center py-2 px-3 text-xl'>
           <span className='grow'>{answer}</span>
           <EditButton onClick={() => setEditing(true)} />
           <DeleteButton action={deleteAnswer} args={{ id, quizId }} />
