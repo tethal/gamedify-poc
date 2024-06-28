@@ -9,6 +9,8 @@ import { useWindowSize } from 'react-use';
 import Confetti from 'react-confetti';
 import Link from 'next/link';
 import { AiOutlineRedo } from 'react-icons/ai';
+import { IoHome } from 'react-icons/io5';
+import { usePathname } from 'next/navigation';
 
 export default function AzkGame({ questions }: { questions: Question[] }) {
   const gameState = useAzkGameState(questions);
@@ -16,6 +18,8 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
   {
     /*TODO: skontrolovat ci to je dobre, pripadne prepisat do typescriptu */
   }
+
+  const pathname = usePathname();
 
   return (
     <>
@@ -32,11 +36,18 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
             </span>
             won this game
             <Link
-              href='/'
-              className={`flex items-center justify-center  px-6 py-1.5 border rounded-full mt-4 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:border-cyan-950`}
+              href={`${pathname}`}
+              className={`flex items-center justify-center gap-2  px-6 py-1.5 border rounded-full mt-4 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:border-cyan-950`}
             >
+              <AiOutlineRedo className='text-4xl' />
               Play again?
-              <AiOutlineRedo />
+            </Link>
+            <Link
+              href='/'
+              className={`flex  items-center justify-center gap-2 px-6 py-1.5 border rounded-full mt-4 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:border-cyan-950`}
+            >
+              <IoHome className='text-4xl ' />
+              Go Home
             </Link>
           </div>
         </>
@@ -73,6 +84,13 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
             submitAnswer={gameState.checkAnswer}
           />
         )}
+        <Link
+          href='/'
+          className='flex flex-col items-center absolute bottom-0 right-0'
+        >
+          <IoHome className='text-4xl ' />
+          Go Home
+        </Link>
       </div>
     </>
   );
