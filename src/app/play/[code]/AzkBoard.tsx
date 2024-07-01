@@ -1,4 +1,4 @@
-import { type TileState } from './defs';
+import { type TileState, triangular, triangularInverse } from './defs';
 import AzkTile from './AzkTile';
 
 interface BoardProps {
@@ -25,10 +25,6 @@ interface BoardLayout {
   boardHeight: number; // the height of the board in pixels
   tiles: TileLayout[]; // the tiles, from top to bottom, left to right
 }
-
-const triangular = (n: number) => (n * (n + 1)) / 2;
-const triangularInverse = (n: number) =>
-  Math.floor((Math.sqrt(1 + 8 * n + 1) - 1) / 2);
 
 const createBoardLayout = (
   maxTileCount: number,

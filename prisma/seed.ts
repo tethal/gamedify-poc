@@ -75,6 +75,31 @@ async function main() {
       },
     },
   });
+
+  for (let rows = 4; rows <= 8; ++rows) {
+    const tileCount = (rows * (rows + 1)) / 2;
+    const questions = Array.from(Array(tileCount), (_, i) => {
+      return {
+        question: `Question #${i + 1}`,
+        answers: {
+          create: [{ answer: `${i + 1}` }],
+        },
+      };
+    });
+
+    const code = `${9900 + rows}`;
+    await prisma.quiz.upsert({
+      where: { code },
+      update: {},
+      create: {
+        name: `Quiz with ${rows} rows / ${tileCount} questions`,
+        code,
+        questions: {
+          create: questions,
+        },
+      },
+    });
+  }
 }
 
 main()
