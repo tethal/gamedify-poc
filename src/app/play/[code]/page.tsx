@@ -17,14 +17,23 @@ export default async function PlayPage({ params: { code } }: PlayPageProps) {
     where: { code },
     include: { questions: { include: { answers: true } } },
   });
-  const boardSize = 10; // TODO support different board sizes
-  if (!quiz || quiz.questions.length < boardSize) {
+  if (!quiz || quiz.questions.length < 10) {
     throw notFound();
   }
-  // TODO shuffle questions and return only boardSize questions
-  const questions = quiz.questions.map(question => ({
-    question: question.question,
-    answers: question.answers.map(answer => answer.answer),
-  }));
+  let row = 1;
+  const questions = [];
+  // as long as there are enough questions to fill the next row...
+  while (quiz.questions.length >= row) {
+    // ...randomly pick questions from the remaining ones
+    for (let i = 0; i < row; ++i) {
+      const randomIndex = Math.floor(Math.random() * quiz.questions.length);
+      const { question, answers } = quiz.questions.splice(randomIndex, 1)[0];
+      questions.push({
+        question,
+        answers: answers.map(answer => answer.answer),
+      });
+    }
+    row++;
+  }
   return <AzkGame questions={questions} />;
 }
