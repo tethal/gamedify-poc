@@ -6,6 +6,7 @@ import Form from './Form';
 import EndGame from './EndGame'
 import PlayerOnTurn from './PlayerOnTurn';
 import GoHome from './GoHome';
+import { Question } from './defs';
 
 export default function AzkGame({ questions }: { questions: Question[] }) {
   const gameState = useAzkGameState(questions);
