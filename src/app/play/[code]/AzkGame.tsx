@@ -18,7 +18,7 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
       )}
       <div className='flex-1 flex justify-center lg:justify-between items-center relative'>
        
-          <div className=' w-full  flex items-center justify-between p-4'>
+          <div className=' w-full flex items-center justify-between p-4'>
               <div className='w-full lg:w-2/3 relative '>
                 {
                   !gameState.winner && <PlayerOnTurn playerOnTurn={gameState.playerOnTurn} className={ gameState.playerOnTurn === 'A' ? `left-0` : `right-0`} />
