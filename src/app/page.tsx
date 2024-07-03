@@ -5,7 +5,7 @@ import Avatar from './Avatar';
 
 export default function Home() {
   return (
-    <div className='h-[calc(100vh-60px)]  '>
+    <div className='h-[calc(100vh-60px)]'>
       <nav className='flex justify-end mt-4 max-w-7xl w-full'>
         <Avatar />
       </nav>

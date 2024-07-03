@@ -20,16 +20,14 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
           {gameState.playerOnTurn === 'A' && !gameState.winner ? (
             <PlayerOnTurn
               playerOnTurn={gameState.playerOnTurn}
-              className={`top-0 left-0`}
+              className={`left-0`}
             />
-          ) : gameState.playerOnTurn === 'B' && !gameState.winner ? (
-            <PlayerOnTurn
+          ) : 
+            (<PlayerOnTurn
               playerOnTurn={gameState.playerOnTurn}
-              className={`top-0 right-0`}
-            />
-          ) : (
-            ''
-          )}
+              className={`right-0`}
+            />)
+          }
           <AzkBoard
             className='flex justify-center items-center p-10'
             tileSize={10}
