@@ -1,12 +1,10 @@
 'use client';
 
-import { COLORS, type Question } from './defs';
 import useAzkGameState from './useAzkGameState';
 import AzkBoard from './AzkBoard';
 import Form from './Form';
 import EndGame from './EndGame'
 import PlayerOnTurn from './PlayerOnTurn';
-import WinnerPopUp from './WinnerPopUp';
 import GoHome from './GoHome';
 
 export default function AzkGame({ questions }: { questions: Question[] }) {
