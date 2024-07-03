@@ -16,38 +16,32 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
       {gameState.winner && (
         <EndGame winner={gameState.winner} className={''}/>
       )}
-      <div className='flex justify-center lg:justify-between lg:p-6 items-center relative '>
-        <div className='relative w-full lg:w-2/3 lg:h-[90%]'>
-          {gameState.playerOnTurn === 'A' && !gameState.winner ? (
-            <PlayerOnTurn
-              playerOnTurn={gameState.playerOnTurn}
-              className={`left-0`}
-            />
-          ) : 
-            (<PlayerOnTurn
-              playerOnTurn={gameState.playerOnTurn}
-              className={`right-0`}
-            />)
-          }
-          <AzkBoard
-            className='flex justify-center items-center p-10'
-            tileSize={10}
-            tileStates={gameState.tileStates}
-            onTileClicked={async index => await gameState.selectTile(index)}
-          />
-        </div>
-
-        {gameState.currentQuestion && (
-          <Form
-            playerOnTurn={gameState.playerOnTurn}
-            tileLabel={(gameState.selectedIndex + 1).toString()}
-            question={gameState.currentQuestion}
-            submitAnswer={gameState.checkAnswer}
-          />
-        )}
-
+      <div className='flex-1 flex justify-center lg:justify-between items-center relative'>
+       
+          <div className=' w-full  flex items-center justify-between p-4'>
+              <div className='w-full lg:w-2/3 relative '>
+                {
+                  !gameState.winner && <PlayerOnTurn playerOnTurn={gameState.playerOnTurn} className={ gameState.playerOnTurn === 'A' ? `left-0` : `right-0`} />
+                }
+                <AzkBoard
+                  className='sm:h-[80%] sm:w-[80%] flex'
+                  tileSize={10}
+                  tileStates={gameState.tileStates}
+                  onTileClicked={async index => await gameState.selectTile(index)}
+                />
+              </div>
+            {gameState.currentQuestion && (
+              <Form
+                playerOnTurn={gameState.playerOnTurn}
+                tileLabel={(gameState.selectedIndex + 1).toString()}
+                question={gameState.currentQuestion}
+                submitAnswer={gameState.checkAnswer}
+              />
+            )}
+          </div>
+      
         {!gameState.winner && <GoHome
-          className={`absolute right-0 bottom-0 z-10 rounded-full flex-col shadow-xl shadow-cyan-500`}
+          className={`absolute right-0 top-0 lg:bottom-0 lg:top-auto z-10 rounded-full flex-col shadow-xl shadow-cyan-500`}
         />}
       </div>
     </>
