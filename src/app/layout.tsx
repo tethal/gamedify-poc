@@ -12,7 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className='bg-zinc-950 text-white/70 flex flex-col items-center mt-28 md:mt-0 gap-4 w-full h-screen select-none p-6'>
+      <body className='bg-zinc-950 text-white/70  w-[min(1200px,98%)] mx-auto min-h-screen p-4 select-none'>
         {children}
       </body>
     </html>
