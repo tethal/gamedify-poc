@@ -49,9 +49,9 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
           />
         )}
 
-        <GoHome
+        {!gameState.winner && <GoHome
           className={`absolute right-0 bottom-0 z-10 rounded-full flex-col shadow-xl shadow-cyan-500`}
-        />
+        />}
       </div>
     </>
   );
