@@ -39,11 +39,7 @@ export default function AzkGame({ questions }: { questions: Question[] }) {
               />
             )}
           </div>
-      
-        {!gameState.winner && <GoHome
-          className={`absolute right-0 top-0 lg:bottom-0 lg:top-auto z-10 rounded-full flex-col shadow-xl shadow-cyan-500`}
-        />}
-      </div>
+    </div>
     </>
   );
 }
