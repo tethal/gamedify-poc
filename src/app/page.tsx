@@ -15,12 +15,13 @@ export default async function Home() {
         <h1 className='text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-cyan-500 '>
           AZk game
         </h1>
-        <Link href='/quiz/' className='underline'>
-          List of quizzes (TODO hide unless authenticated)
-        </Link>
+        {session !== null && (
+          <Link href='/quiz/' className='underline'>
+            List of quizzes
+          </Link>
+        )}
         <EnterQuizCodeForm />
       </div>
-   
     </div>
   );
 }
