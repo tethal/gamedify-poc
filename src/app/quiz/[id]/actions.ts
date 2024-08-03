@@ -2,9 +2,7 @@
 
 import prisma from '@/lib/db';
 import { revalidatePath } from 'next/cache';
-import { convertDbError, isCodeValid, simulateLatency } from '@/lib/util';
-
-// TODO all server actions should validate all inputs
+import { convertDbError, isCodeValid, isUserAllowedToEdit } from '@/lib/util';
 
 /**
  * Update the name of a quiz.
@@ -15,11 +13,12 @@ import { convertDbError, isCodeValid, simulateLatency } from '@/lib/util';
  *               (e.g. the quiz does not exist)
  */
 export async function updateQuizName(name: string, { id }: { id: number }) {
-  await simulateLatency();
   if (name === '') {
     return { error: 'Name cannot be empty' };
   }
-  // TODO: ensure user is authorized to update this question set
+  if (!(await isUserAllowedToEdit(id))) {
+    return { error: 'Unauthorized' };
+  }
   try {
     await prisma.quiz.update({
       where: { id },
@@ -33,12 +32,13 @@ export async function updateQuizName(name: string, { id }: { id: number }) {
 }
 
 export async function updateQuizCode(newCode: string, { id }: { id: number }) {
-  await simulateLatency();
   const code = newCode === '' ? null : newCode;
   if (code !== null && !isCodeValid(code)) {
     return { error: 'Invalid code' };
   }
-  // TODO: ensure user is authorized to update this question set
+  if (!(await isUserAllowedToEdit(id))) {
+    return { error: 'Unauthorized' };
+  }
   try {
     await prisma.quiz.update({
       where: { id },
@@ -59,9 +59,11 @@ export async function createQuestion(
   question: string,
   { quizId }: { quizId: number },
 ) {
-  await simulateLatency();
   if (!question) {
     return { error: 'question is required' };
+  }
+  if (!(await isUserAllowedToEdit(quizId))) {
+    return { error: 'Unauthorized' };
   }
   try {
     await prisma.question.create({
@@ -83,6 +85,9 @@ export async function deleteQuestion({
   id: number;
   quizId: number;
 }) {
+  if (!(await isUserAllowedToEdit(quizId))) {
+    return { error: 'Unauthorized' };
+  }
   try {
     await prisma.question.delete({
       where: { id },
@@ -99,11 +104,12 @@ export async function updateQuestion(
   question: string,
   { id, quizId }: { id: number; quizId: number },
 ) {
-  await simulateLatency();
   if (question === '') {
     return { error: 'Question cannot be empty' };
   }
-  // TODO: ensure user is authorized to update this question set
+  if (!(await isUserAllowedToEdit(quizId))) {
+    return { error: 'Unauthorized' };
+  }
   try {
     await prisma.question.update({
       where: { id },
@@ -119,9 +125,11 @@ export async function createAnswer(
   answer: string,
   { quizId, questionId }: { quizId: number; questionId: number },
 ) {
-  await simulateLatency();
   if (!answer) {
     return { error: 'answer is required' };
+  }
+  if (!(await isUserAllowedToEdit(quizId))) {
+    return { error: 'Unauthorized' };
   }
   try {
     await prisma.answer.create({
@@ -143,6 +151,9 @@ export async function deleteAnswer({
   id: number;
   quizId: number;
 }) {
+  if (!(await isUserAllowedToEdit(quizId))) {
+    return { error: 'Unauthorized' };
+  }
   try {
     await prisma.answer.delete({
       where: { id },
@@ -159,11 +170,12 @@ export async function updateAnswer(
   answer: string,
   { quizId, id }: { quizId: number; id: number },
 ) {
-  await simulateLatency();
   if (answer === '') {
     return { error: 'Answer cannot be empty' };
   }
-  // TODO: ensure user is authorized to update this question set
+  if (!(await isUserAllowedToEdit(quizId))) {
+    return { error: 'Unauthorized' };
+  }
   try {
     await prisma.answer.update({
       where: { id },

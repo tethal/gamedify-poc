@@ -1,17 +1,26 @@
 import prisma from '@/lib/db';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import QuizName from './QuizName';
 import { ensureNumber } from '@/lib/util';
 import Link from 'next/link';
 import QuizCode from './QuizCode';
 import QuestionList from './QuestionList';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 
 export default async function QuizPage({ params }: { params: { id: string } }) {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect('/');
+  }
   const quiz = await prisma.quiz.findUnique({
     where: { id: ensureNumber(params.id) },
     include: { questions: { include: { answers: true } } },
   });
-  if (!quiz) {
+  if (
+    !quiz ||
+    (session.user.role !== 'admin' && quiz.ownerId !== session.user.id)
+  ) {
     notFound();
   }
 
