@@ -9,12 +9,6 @@ import { FaStarOfLife } from 'react-icons/fa';
 export default function EnterQuizCodeForm() {
   const [code, setCode] = useState('');
   const router = useRouter();
-  // TODO: server action which:
-  //  - checks if the quiz code is valid
-  //  - shuffles the questions
-  //  - creates a new game (under a new game code)
-  //  - redirects to the /play/:code page
-  // For now, the /play/:code page accepts quiz codes directly
   return (
     <form
       onSubmit={e => {
@@ -37,7 +31,6 @@ export default function EnterQuizCodeForm() {
           }}
           autoFocus
           required
-      
         />
         <span className='text-lg absolute -bottom-7 left-0 flex pl-2 gap-1'>
           <FaStarOfLife className='text-[8px] mt-[4px] ' />

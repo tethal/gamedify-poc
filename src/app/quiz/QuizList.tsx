@@ -5,14 +5,23 @@ import DeleteButton from '@/components/DeleteButton';
 import EditButton from '@/components/EditButton';
 import { MdPlayArrow } from 'react-icons/md';
 import IconButton from '@/components/IconButton';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+import { redirect } from 'next/navigation';
 
 export default async function QuizList() {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect('/');
+  }
   const quizzes = await prisma.quiz.findMany({
     include: {
       _count: {
         select: { questions: true },
       },
+      owner: { select: { name: true } },
     },
+    where: session.user.role === 'admin' ? {} : { ownerId: session.user.id },
   });
   quizzes.sort((a, b) => a.name.localeCompare(b.name));
   return (

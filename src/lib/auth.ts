@@ -22,6 +22,7 @@ const getProviders = () => {
               name: 'DEV Admin',
               email: 'admin@admin.admin',
               image: '',
+              role: 'admin',
             };
           }
           throw new Error('User not found.');
@@ -39,4 +40,18 @@ export const authOptions: NextAuthOptions = {
     strategy: 'jwt',
   },
   providers: getProviders(),
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.userId = user.id;
+        token.userRole = user.role;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.id = token.userId;
+      session.user.role = token.userRole;
+      return session;
+    },
+  },
 };

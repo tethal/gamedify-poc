@@ -50,6 +50,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Quiz          Quiz[]
+  role          String    @default("user")
 
   @@map("user")
 }
@@ -66,7 +68,9 @@ model Quiz {
   id        Int        @id @default(autoincrement())
   name      String
   code      String?    @unique
+  ownerId   String?
   questions Question[]
+  owner     User?      @relation(fields: [ownerId], references: [id], onDelete: SetNull)
 }
 
 model Question {
