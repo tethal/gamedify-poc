@@ -57,7 +57,7 @@ export default function AzkTile({
           textAnchor='middle'
           dominantBaseline='middle'
           fontSize={size * 0.8}
-          fill={state === 'empty' || state === 'selected' ? 'white' : '#27272A'}
+          fill={state === 'empty' || state === 'selected' ? 'white' : '#09090b'}
         >
           {label}
         </text>

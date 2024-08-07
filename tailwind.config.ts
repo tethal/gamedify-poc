@@ -32,16 +32,22 @@ const config: Config = {
     'hover:shadow-[0px_0px_10px_5px_#1f51ff]',
     'shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_#1f51ff]',
     ' hover:shadow-[0px_0px_10px_2px_#1f51ff]',
+
+    //player B
+    'bg-[#2563EB]',
+    'text-[#2563EB]',
+    'hover:text-[#2563EB]',
+    'border-[#2563EB]',
+    'hover:border-[#2563EB]',
+    'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#2563EB]',
+    'hover:shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#2563EB]',
+    'shadow-[0px_0px_10px_5px_#2563EB]',
+    'hover:shadow-[0px_0px_10px_5px_#2563EB]',
+    'shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_#2563EB]',
+    ' hover:shadow-[0px_0px_10px_2px_#2563EB]',
   ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-    },
-  },
+  darkMode: 'class',
+  theme: {},
   plugins: [],
 };
 export default config;

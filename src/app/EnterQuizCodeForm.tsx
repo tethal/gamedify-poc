@@ -19,7 +19,9 @@ export default function EnterQuizCodeForm() {
       }}
       className='flex flex-col justify-between p-6 items-center text-2xl md:flex-row md:gap-4'
     >
-      <label htmlFor='code'>Quiz code:</label>
+      <label htmlFor='code' className='text-cyan-500 dark:text-white/70'>
+        Quiz code:
+      </label>
       <div className='relative my-2'>
         <Input
           type='number'
@@ -40,7 +42,7 @@ export default function EnterQuizCodeForm() {
 
       <button
         type='submit'
-        className='border px-6 py-1.5 rounded-full mt-10 md:mt-0 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:border-cyan-950'
+        className='border px-6 py-1.5 rounded-full mt-10 md:mt-0 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] dark:hover:border-cyan-950'
       >
         Play
       </button>
