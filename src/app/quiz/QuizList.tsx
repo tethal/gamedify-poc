@@ -27,11 +27,11 @@ export default async function QuizList() {
       </thead>
       <tbody>
         {quizzes.map(quiz => (
-          <tr key={quiz.id}>
-            <td className='p-3'>{quiz.code}</td>
-            <td className='p-3'>{quiz.name}</td>
-            <td className='p-3'>{quiz._count.questions}</td>
-            <td className='p-3'>
+          <tr key={quiz.id} className=''>
+            <td className='p-3 border'>{quiz.code}</td>
+            <td className='p-3 border'>{quiz.name}</td>
+            <td className='p-3 border'>{quiz._count.questions}</td>
+            <td className='p-3 border mx-auto'>
               <Link href={`/quiz/${quiz.id}`}>
                 <EditButton />
               </Link>

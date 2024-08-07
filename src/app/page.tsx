@@ -1,17 +1,17 @@
 import Link from 'next/link';
 import EnterQuizCodeForm from './EnterQuizCodeForm';
-import Avatar from './Avatar'
+import Avatar from './Avatar';
 import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
   return (
-    <div className='flex flex-col items-center justify-center'>
-      <nav className='flex justify-end gap-4 max-w-7xl w-full'>
+    <>
+      <nav className='absolute top-4 right-10 flex justify-end gap-4'>
         <Avatar />
       </nav>
-      <div className='h-[90vh] flex flex-col justify-center items-center '>
+      <div className='flex flex-col justify-center items-center h-[92dvh]'>
         <h1 className='text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-cyan-500 '>
           AZk game
         </h1>
@@ -22,6 +22,6 @@ export default async function Home() {
         )}
         <EnterQuizCodeForm />
       </div>
-    </div>
+    </>
   );
 }
