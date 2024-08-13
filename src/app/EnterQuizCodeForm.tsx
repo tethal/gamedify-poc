@@ -42,7 +42,7 @@ export default function EnterQuizCodeForm() {
 
       <button
         type='submit'
-        className='border px-6 py-1.5 rounded-full mt-10 md:mt-0 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] dark:hover:border-cyan-950'
+        className='border shadow-[0px_0px_3px_#000] px-6 py-1.5 rounded-full mt-10 md:mt-0 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:dark:border-cyan-950'
       >
         Play
       </button>

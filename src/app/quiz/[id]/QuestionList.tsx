@@ -14,8 +14,8 @@ export default function QuestionList({ quizId, questions }: QuestionListProps) {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   return (
     <>
-      <h2>Questions:</h2>
-      <div className='flex flex-col'>
+      <h2 className='text-xl'>Questions:</h2>
+      <div className='grid md:grid-cols-2 lg:grid-cols-3 p-6 gap-1'>
         {questions.map(q => (
           <Question
             key={q.id}

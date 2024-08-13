@@ -20,6 +20,19 @@ const config: Config = {
     'shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_#f3f400]',
     ' hover:shadow-[0px_0px_10px_2px_#f3f400]',
 
+    //player A
+    'bg-[#FDB827]',
+    'text-[#FDB827]',
+    'hover:text-[#FDB827]',
+    'border-[#FDB827]',
+    'hover:border-[#FDB827]',
+    'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#FDB827]',
+    'hover:shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#FDB827]',
+    'shadow-[0px_0px_10px_5px_#FDB827]',
+    'hover:shadow-[0px_0px_10px_5px_#FDB827]',
+    'shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_#FDB827]',
+    ' hover:shadow-[0px_0px_10px_2px_#FDB827]',
+
     //player B
     'bg-[#1f51ff]',
     'text-[#1f51ff]',
@@ -44,7 +57,20 @@ const config: Config = {
     'shadow-[0px_0px_10px_5px_#2563EB]',
     'hover:shadow-[0px_0px_10px_5px_#2563EB]',
     'shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_#2563EB]',
-    ' hover:shadow-[0px_0px_10px_2px_#2563EB]',
+    'hover:shadow-[0px_0px_10px_2px_#2563EB]',
+
+    //player B
+    'bg-[#21209C]',
+    'text-[#21209C]',
+    'hover:text-[#21209C]',
+    'border-[#21209C]',
+    'hover:border-[#21209C]',
+    'shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#21209C]',
+    'hover:shadow-[0px_0px_10px_#fff,0px_0px_10px_20px_#21209C]',
+    'shadow-[0px_0px_10px_5px_#21209C]',
+    'hover:shadow-[0px_0px_10px_5px_#21209C]',
+    'shadow-[0px_0px_10px_#fff,0px_0px_10px_5px_#21209C]',
+    'hover:shadow-[0px_0px_10px_2px_#21209C]',
   ],
   darkMode: 'class',
   theme: {},

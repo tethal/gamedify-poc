@@ -48,10 +48,10 @@ const TextEditForm = <T extends any>({
       {isPending ? (
         <Saving />
       ) : (
-        <>
+        <div>
           <SaveButton />
           <CancelButton onClick={onClose} />
-        </>
+        </div>
       )}
       <p>{error}</p>
     </form>

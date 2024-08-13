@@ -32,7 +32,7 @@ const QuestionText = ({
           args={{ id, quizId }}
         />
       ) : (
-        <div className='flex justify-between items-center py-2 px-3 text-xl'>
+        <div className='flex justify-between items-center py-2 px-3 text-xl gap-2'>
           {expanded ? <MdArrowDropDown /> : <MdArrowRight />}
           <span className='grow cursor-pointer' onClick={expand}>
             {question}
