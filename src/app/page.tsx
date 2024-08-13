@@ -16,7 +16,7 @@ export default async function Home() {
           AZk game
         </h1>
         {session !== null && (
-          <Link href='/quiz/' className='underline'>
+          <Link href='/quiz/' className='underline pt-6 text-2xl'>
             List of quizzes
           </Link>
         )}

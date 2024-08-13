@@ -10,8 +10,8 @@ export interface Question {
 export const COLORS: { [key in TileState]: string } = {
   empty: '#A1A1AA',
   selected: '#3F3F46',
-  A: '#f3f400',
-  B: '#1f51ff',
+  A: '#FDB827',
+  B: '#2563EB',
 };
 
 export const triangular = (n: number) => (n * (n + 1)) / 2;

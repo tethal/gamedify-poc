@@ -16,7 +16,7 @@ export default function Question({
   expand,
 }: QuestionProps) {
   return (
-    <>
+    <div className='border border-zinc-600 p-4'>
       <QuestionText
         quizId={quizId}
         id={id}
@@ -27,6 +27,6 @@ export default function Question({
       {expanded && (
         <AnswerList quizId={quizId} questionId={id} answers={answers} />
       )}
-    </>
+    </div>
   );
 }

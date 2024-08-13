@@ -17,7 +17,7 @@ const QuizCode = ({ id, code }: QuizCodeViewProps) => {
   const [editing, setEditing] = useState(false);
   return (
     <>
-      <h2>Code:</h2>
+      <h2 className='text-xl'>Code:</h2>
       {editing ? (
         <TextEditForm
           initialText={code || ''}
@@ -27,7 +27,7 @@ const QuizCode = ({ id, code }: QuizCodeViewProps) => {
           args={{ id }}
         />
       ) : (
-        <div className='flex items-center w-[20rem] py-2 px-3 text-xl'>
+        <div className='flex items-center w-[min(30rem,98%)] py-2 px-3 text-2xl gap-2 font-bold'>
           <span className='grow'>{code}</span>
           <EditButton onClick={() => setEditing(true)} />
           {code !== null && (

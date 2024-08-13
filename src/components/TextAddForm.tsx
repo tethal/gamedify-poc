@@ -41,8 +41,10 @@ const TextAddForm = <T extends any>({
         </IconButton>
       ) : (
         <form onSubmit={formAction}>
-          <div className='flex gap-2 items-center'>
-            <label htmlFor='name'>{label}</label>
+          <div className='grid grid-cols-[auto_1fr_auto] gap-4 p-4'>
+            <label htmlFor='name' className='font-bold self-center'>
+              {label}
+            </label>
             <Input
               type='text'
               id='name'

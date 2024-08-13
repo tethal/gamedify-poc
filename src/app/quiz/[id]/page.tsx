@@ -7,6 +7,7 @@ import QuizCode from './QuizCode';
 import QuestionList from './QuestionList';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { TiArrowBack } from 'react-icons/ti';
 
 export default async function QuizPage({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions);
@@ -26,8 +27,12 @@ export default async function QuizPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <div className='flex flex-col'>
-        <Link className='underline' href='/quiz'>
+      <div className='max-w-7xl p-6 mb-20 space-y-4'>
+        <Link
+          className='flex gap-2 items-center w-fit border shadow-[0px_0px_3px_#000] rounded-full px-6 py-1.5 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:dark:border-cyan-950'
+          href='/quiz'
+        >
+          <TiArrowBack />
           Back to list
         </Link>
         <QuizName {...quiz} />
