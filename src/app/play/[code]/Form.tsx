@@ -37,7 +37,7 @@ const Form = ({
         autoFocus
       />
       <button
-        className={`border rounded-full px-6 py-1.5 text-xl  hover:text-[${COLORS[playerOnTurn]}] hover:border-[${COLORS[playerOnTurn]}]  hover:shadow-[0px_0px_10px_2px_${COLORS[playerOnTurn]}] `}
+        className={`border shadow-[0px_0px_3px_#000] rounded-full px-6 py-1.5 text-xl  hover:text-[${COLORS[playerOnTurn]}] hover:border-[${COLORS[playerOnTurn]}]  hover:shadow-[0px_0px_10px_2px_${COLORS[playerOnTurn]}] `}
       >
         Submit
         {/* TODO: translate to czech - Odpovedet ?, pripadne spravit celu hru v troch jazykovych permutaciach CZ/SK/EN */}
