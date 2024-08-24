@@ -8,6 +8,7 @@ import QuestionList from './QuestionList';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { TiArrowBack } from 'react-icons/ti';
+import T from '@/components/T';
 
 export default async function QuizPage({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions);
@@ -33,7 +34,7 @@ export default async function QuizPage({ params }: { params: { id: string } }) {
           href='/quiz'
         >
           <TiArrowBack />
-          Back to list
+          <T t='back_to_list' />
         </Link>
         <QuizName {...quiz} />
         <QuizCode {...quiz} />

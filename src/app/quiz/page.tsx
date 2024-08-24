@@ -6,7 +6,7 @@ export default function QuizzesPage() {
   return (
     <div className='max-w-7xl w-full flex flex-col gap-4 p-6 mx-auto mb-20 '>
       <QuizList />
-      <TextAddForm label='Create a new quiz:' action={createQuiz} args={{}} />
+      <TextAddForm label='create_new_quiz' action={createQuiz} args={{}} />
     </div>
   );
 }

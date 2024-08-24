@@ -6,6 +6,7 @@ import CancelButton from '@/components/CancelButton';
 import Input from '@/components/Input';
 import Saving from '@/components/Saving';
 import useFormAction from '@/hooks/useFormAction';
+import useTranslation from '@/hooks/useTranslation';
 
 interface TextEditFormProps<T> {
   initialText: string;
@@ -25,6 +26,7 @@ const TextEditForm = <T extends any>({
   action,
   args,
 }: TextEditFormProps<T>) => {
+  const { translate } = useTranslation();
   const [text, setText] = useState(initialText);
   const { error, isPending, formAction } = useFormAction(async () => {
     const result = await action(text, args);
@@ -53,7 +55,7 @@ const TextEditForm = <T extends any>({
           <CancelButton onClick={onClose} />
         </div>
       )}
-      <p>{error}</p>
+      <p>{translate(error)}</p>
     </form>
   );
 };

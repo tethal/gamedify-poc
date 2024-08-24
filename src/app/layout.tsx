@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import GoHome from './play/[code]/GoHome';
+import LanguageButton from '@/components/LanguageButton';
 
 export const metadata: Metadata = {
   title: 'GamEdify PoC',
@@ -23,6 +24,9 @@ export default function RootLayout({
             }
           />
           <ThemeSwitcher />
+          <LanguageButton lang='cs' />
+          <LanguageButton lang='sk' />
+          <LanguageButton lang='en' />
         </footer>
       </body>
     </html>

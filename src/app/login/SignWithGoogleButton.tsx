@@ -1,8 +1,10 @@
 'use client';
 
 import { signIn } from 'next-auth/react';
+import useTranslation from '@/hooks/useTranslation';
 
 export default function SignWithGoogleButton() {
+  const { translate } = useTranslation();
   return (
     <button
       className='border p-2'
@@ -12,7 +14,7 @@ export default function SignWithGoogleButton() {
         })
       }
     >
-      Login with Google
+      {translate('sign_with_google')}
     </button>
   );
 }

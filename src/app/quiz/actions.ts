@@ -9,10 +9,10 @@ import { authOptions } from '@/lib/auth';
 export async function createQuiz(name: string, {}: {}) {
   let session = await getServerSession(authOptions);
   if (!session) {
-    return { error: 'Unauthorized' };
+    return { error: 'unauthorized' };
   }
   if (!name) {
-    return { error: 'name is required' };
+    return { error: 'name_is_required' };
   }
   try {
     await prisma.quiz.create({
@@ -29,7 +29,7 @@ export async function createQuiz(name: string, {}: {}) {
 
 export async function deleteQuiz({ id }: { id: number }) {
   if (!(await isUserAllowedToEdit(id))) {
-    return { error: 'Unauthorized' };
+    return { error: 'unauthorized' };
   }
   try {
     await prisma.quiz.delete({

@@ -14,10 +14,10 @@ import { convertDbError, isCodeValid, isUserAllowedToEdit } from '@/lib/util';
  */
 export async function updateQuizName(name: string, { id }: { id: number }) {
   if (name === '') {
-    return { error: 'Name cannot be empty' };
+    return { error: 'name_is_required' };
   }
   if (!(await isUserAllowedToEdit(id))) {
-    return { error: 'Unauthorized' };
+    return { error: 'unauthorized' };
   }
   try {
     await prisma.quiz.update({
@@ -34,10 +34,10 @@ export async function updateQuizName(name: string, { id }: { id: number }) {
 export async function updateQuizCode(newCode: string, { id }: { id: number }) {
   const code = newCode === '' ? null : newCode;
   if (code !== null && !isCodeValid(code)) {
-    return { error: 'Invalid code' };
+    return { error: 'invalid_code' };
   }
   if (!(await isUserAllowedToEdit(id))) {
-    return { error: 'Unauthorized' };
+    return { error: 'unauthorized' };
   }
   try {
     await prisma.quiz.update({
@@ -60,10 +60,10 @@ export async function createQuestion(
   { quizId }: { quizId: number },
 ) {
   if (!question) {
-    return { error: 'question is required' };
+    return { error: 'question_is_required' };
   }
   if (!(await isUserAllowedToEdit(quizId))) {
-    return { error: 'Unauthorized' };
+    return { error: 'unauthorized' };
   }
   try {
     await prisma.question.create({
@@ -86,7 +86,7 @@ export async function deleteQuestion({
   quizId: number;
 }) {
   if (!(await isUserAllowedToEdit(quizId))) {
-    return { error: 'Unauthorized' };
+    return { error: 'unauthorized' };
   }
   try {
     await prisma.question.delete({
@@ -105,10 +105,10 @@ export async function updateQuestion(
   { id, quizId }: { id: number; quizId: number },
 ) {
   if (question === '') {
-    return { error: 'Question cannot be empty' };
+    return { error: 'question_is_required' };
   }
   if (!(await isUserAllowedToEdit(quizId))) {
-    return { error: 'Unauthorized' };
+    return { error: 'unauthorized' };
   }
   try {
     await prisma.question.update({
@@ -126,10 +126,10 @@ export async function createAnswer(
   { quizId, questionId }: { quizId: number; questionId: number },
 ) {
   if (!answer) {
-    return { error: 'answer is required' };
+    return { error: 'answer_is_required' };
   }
   if (!(await isUserAllowedToEdit(quizId))) {
-    return { error: 'Unauthorized' };
+    return { error: 'unauthorized' };
   }
   try {
     await prisma.answer.create({
@@ -152,7 +152,7 @@ export async function deleteAnswer({
   quizId: number;
 }) {
   if (!(await isUserAllowedToEdit(quizId))) {
-    return { error: 'Unauthorized' };
+    return { error: 'unauthorized' };
   }
   try {
     await prisma.answer.delete({
@@ -171,10 +171,10 @@ export async function updateAnswer(
   { quizId, id }: { quizId: number; id: number },
 ) {
   if (answer === '') {
-    return { error: 'Answer cannot be empty' };
+    return { error: 'answer_is_required' };
   }
   if (!(await isUserAllowedToEdit(quizId))) {
-    return { error: 'Unauthorized' };
+    return { error: 'unauthorized' };
   }
   try {
     await prisma.answer.update({

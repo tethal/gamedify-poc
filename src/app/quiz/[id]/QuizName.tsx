@@ -3,6 +3,7 @@ import { useState } from 'react';
 import EditButton from '@/components/EditButton';
 import TextEditForm from '@/components/TextEditForm';
 import { updateQuizName } from './actions';
+import useTranslation from '@/hooks/useTranslation';
 
 interface QuizNameViewProps {
   id: number;
@@ -14,10 +15,11 @@ interface QuizNameViewProps {
  * @param quiz the quiz to display
  */
 const QuizName = ({ id, name }: QuizNameViewProps) => {
+  const { translate } = useTranslation();
   const [editing, setEditing] = useState(false);
   return (
     <>
-      <h2 className='text-xl'>Quiz name:</h2>
+      <h2 className='text-xl'>{translate('quiz_name')}:</h2>
       {editing ? (
         <TextEditForm
           initialText={name}

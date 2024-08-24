@@ -4,6 +4,7 @@ import EditButton from '@/components/EditButton';
 import DeleteButton from '@/components/DeleteButton';
 import { clearQuizCode, updateQuizCode } from './actions';
 import TextEditForm from '@/components/TextEditForm';
+import useTranslation from '@/hooks/useTranslation';
 
 interface QuizCodeViewProps {
   id: number;
@@ -14,10 +15,11 @@ interface QuizCodeViewProps {
  * Display the code of a quiz, with a pencil icon to switch to edit mode.
  */
 const QuizCode = ({ id, code }: QuizCodeViewProps) => {
+  const { translate } = useTranslation();
   const [editing, setEditing] = useState(false);
   return (
     <>
-      <h2 className='text-xl'>Code:</h2>
+      <h2 className='text-xl'>{translate('quiz_code')}:</h2>
       {editing ? (
         <TextEditForm
           initialText={code || ''}
