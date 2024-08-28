@@ -16,7 +16,7 @@ const DeleteButton = <T extends any>({
   <IconButton
     color='red'
     type='button'
-    onClick={async () => await action(args)}
+    onDoubleClick={async () => await action(args)}
   >
     <MdOutlineDelete />
   </IconButton>

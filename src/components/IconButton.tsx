@@ -6,6 +6,7 @@ interface IconProps {
   children: ReactNode;
   color: Color;
   onClick?: () => void;
+  onDoubleClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
 }
 
@@ -18,9 +19,16 @@ const colors = {
   cyan: 'hover:text-cyan-600 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:border-cyan-600',
 };
 
-const IconButton = ({ children, color, onClick, type }: IconProps) => (
+const IconButton = ({
+  children,
+  color,
+  onClick,
+  type,
+  onDoubleClick,
+}: IconProps) => (
   <button
     onClick={onClick}
+    onDoubleClick={onDoubleClick}
     type={type || 'button'}
     className={`size-10 flex items-center justify-center p-2 rounded-full border shadow-[0px_0px_3px_#000] ' +
       ${colors[color]}`}
