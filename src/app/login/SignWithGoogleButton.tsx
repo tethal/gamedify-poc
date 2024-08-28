@@ -2,12 +2,13 @@
 
 import { signIn } from 'next-auth/react';
 import useTranslation from '@/hooks/useTranslation';
+import Button from '@/components/Button';
+
 
 export default function SignWithGoogleButton() {
   const { translate } = useTranslation();
   return (
-    <button
-      className='gap-2 border shadow-[0px_0px_3px_#000] rounded-full px-6 py-1.5 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:dark:border-cyan-950'
+    <Button
       onClick={() =>
         signIn('google', {
           callbackUrl: `${window.location.origin}/`,
@@ -15,6 +16,6 @@ export default function SignWithGoogleButton() {
       }
     >
       {translate('sign_with_google')}
-    </button>
+    </Button>
   );
 }
