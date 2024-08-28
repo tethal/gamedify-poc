@@ -53,7 +53,7 @@ export default async function QuizList() {
             <td className='p-3 border border-zinc-600 text-center'>
               {quiz._count.questions}
             </td>
-            <td className='p-3 border border-zinc-600 text-center space-x-3'>
+            <td className='p-3 border border-zinc-600 text-center flex flex-col gap-2 md:flex-row md:gap-3 items-center justify-center'>
               <Link href={`/quiz/${quiz.id}`}>
                 <EditButton />
               </Link>

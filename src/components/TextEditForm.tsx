@@ -37,20 +37,18 @@ const TextEditForm = <T extends any>({
   });
 
   return (
-    <form className='flex gap-2 relative' onSubmit={formAction}>
+    <form className='grid gap-2  relative' onSubmit={formAction}>
       <Input
-        className={'text-black p-1.5 rounded-xl'}
         type={type || 'text'}
         name='name'
         value={text}
         disabled={isPending}
-        size={50}
         onChange={e => setText(e.target.value)}
       />
       {isPending ? (
         <Saving />
       ) : (
-        <div>
+        <div className='place-self-end grid grid-cols-2 gap-2'>
           <SaveButton />
           <CancelButton onClick={onClose} />
         </div>

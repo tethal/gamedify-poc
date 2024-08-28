@@ -22,10 +22,8 @@ const IconButton = ({ children, color, onClick, type }: IconProps) => (
   <button
     onClick={onClick}
     type={type || 'button'}
-    className={
-      'inline-block ratio-square p-2 rounded-full border shadow-[0px_0px_3px_#000] ' +
-      colors[color]
-    }
+    className={`size-10 flex items-center justify-center p-2 rounded-full border shadow-[0px_0px_3px_#000] ' +
+      ${colors[color]}`}
   >
     {children}
   </button>

@@ -28,6 +28,7 @@ export default function QuestionList({ quizId, questions }: QuestionListProps) {
           />
         ))}
       </div>
+
       <TextAddForm
         label={translate('add_question')}
         action={createQuestion}

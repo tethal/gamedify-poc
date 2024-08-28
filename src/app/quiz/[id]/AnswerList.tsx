@@ -17,7 +17,7 @@ export default function AnswerList({
   const { translate } = useTranslation();
   return (
     <>
-      <ul className='ml-20'>
+      <ul>
         {answers.map(a => (
           <li key={a.id}>
             <Answer quizId={quizId} id={a.id} answer={a.answer} />

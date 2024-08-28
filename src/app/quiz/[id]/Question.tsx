@@ -16,7 +16,7 @@ export default function Question({
   expand,
 }: QuestionProps) {
   return (
-    <div className='border border-zinc-600 p-4'>
+    <div className='border border-zinc-600 p-4 rounded-xl'>
       <QuestionText
         quizId={quizId}
         id={id}
