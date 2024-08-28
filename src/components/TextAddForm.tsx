@@ -36,16 +36,16 @@ const TextAddForm = <T extends any>({
   });
 
   return (
-    <div>
+    <div className='flex gap-2'>
       {collapsed ? (
         <IconButton color='green' onClick={() => setCollapsed(false)}>
           <MdAdd />
         </IconButton>
       ) : (
-        <form onSubmit={formAction}>
-          <div className='grid grid-cols-[auto_1fr_auto] gap-4 p-4'>
+        <form onSubmit={formAction} className='w-full'>
+          <div className='grid gap-2 p-4'>
             <label htmlFor='name' className='font-bold self-center'>
-              {translate(label)}
+              {translate(label)}:
             </label>
             <Input
               type='text'
@@ -55,7 +55,13 @@ const TextAddForm = <T extends any>({
               value={text}
               onChange={e => setText(e.target.value)}
             />
-            {isPending ? <Saving /> : <SaveButton />}
+            {isPending ? (
+              <Saving />
+            ) : (
+              <div className='place-self-end'>
+                <SaveButton />
+              </div>
+            )}
           </div>
           <p>{translate(error)}</p>
         </form>

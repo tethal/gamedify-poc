@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { isCodeValid } from '@/lib/util';
 import Input from '@/components/Input';
+import Button from '@/components/Button';
 import { FaStarOfLife } from 'react-icons/fa';
 import useTranslation from '@/hooks/useTranslation';
 
@@ -42,12 +43,7 @@ export default function EnterQuizCodeForm() {
         </span>
       </div>
 
-      <button
-        type='submit'
-        className='border shadow-[0px_0px_3px_#000] px-6 py-1.5 rounded-full mt-10 md:mt-0 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:dark:border-cyan-950'
-      >
-        {translate('play')}
-      </button>
+      <Button type='submit'>{translate('play')}</Button>
     </form>
   );
 }

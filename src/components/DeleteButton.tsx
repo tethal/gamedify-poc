@@ -8,6 +8,7 @@ interface DeleteButtonProps<T> {
   args: T;
 }
 
+
 // TODO confirm dialog
 const DeleteButton = <T extends any>({
   action,
@@ -16,7 +17,7 @@ const DeleteButton = <T extends any>({
   <IconButton
     color='red'
     type='button'
-    onClick={async () => await action(args)}
+    onDoubleClick={async () => await action(args)}
   >
     <MdOutlineDelete />
   </IconButton>

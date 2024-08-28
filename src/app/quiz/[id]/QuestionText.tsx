@@ -32,9 +32,12 @@ const QuestionText = ({
           args={{ id, quizId }}
         />
       ) : (
-        <div className='flex justify-between items-center py-2 px-3 text-xl gap-2'>
+        <div className='flex justify-between items-center py-2 px-3 text-xl gap-2 '>
           {expanded ? <MdArrowDropDown /> : <MdArrowRight />}
-          <span className='grow cursor-pointer' onClick={expand}>
+          <span
+            className='grow cursor-pointer hover:text-cyan-400'
+            onClick={expand}
+          >
             {question}
           </span>
           <EditButton onClick={() => setEditing(true)} />
