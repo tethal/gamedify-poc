@@ -25,7 +25,7 @@ export default function EnterQuizCodeForm() {
       <label htmlFor='code' className='text-cyan-500 dark:text-white/70'>
         {translate('quiz_code')}:
       </label>
-      <div className='relative my-2'>
+      <div className='relative mt-2 my-2 mb-10 md:mb-2'>
         <Input
           type='number'
           id='code'
