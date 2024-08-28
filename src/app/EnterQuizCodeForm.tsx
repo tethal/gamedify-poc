@@ -5,10 +5,12 @@ import { useState } from 'react';
 import { isCodeValid } from '@/lib/util';
 import Input from '@/components/Input';
 import { FaStarOfLife } from 'react-icons/fa';
+import useTranslation from '@/hooks/useTranslation';
 
 export default function EnterQuizCodeForm() {
   const [code, setCode] = useState('');
   const router = useRouter();
+  const { translate } = useTranslation();
   return (
     <form
       onSubmit={e => {
@@ -20,7 +22,7 @@ export default function EnterQuizCodeForm() {
       className='flex flex-col justify-between p-6 items-center text-2xl md:flex-row md:gap-4'
     >
       <label htmlFor='code' className='text-cyan-500 dark:text-white/70'>
-        Quiz code:
+        {translate('quiz_code')}:
       </label>
       <div className='relative my-2'>
         <Input
@@ -36,7 +38,7 @@ export default function EnterQuizCodeForm() {
         />
         <span className='text-lg absolute -bottom-7 left-0 flex pl-2 gap-1'>
           <FaStarOfLife className='text-[8px] mt-[4px] ' />
-          Please enter quiz code
+          {translate('please_enter_quiz_code')}
         </span>
       </div>
 
@@ -44,7 +46,7 @@ export default function EnterQuizCodeForm() {
         type='submit'
         className='border shadow-[0px_0px_3px_#000] px-6 py-1.5 rounded-full mt-10 md:mt-0 hover:text-cyan-500 hover:shadow-[0px_0px_10px_2px_#06B6D4] hover:dark:border-cyan-950'
       >
-        Play
+        {translate('play')}
       </button>
     </form>
   );

@@ -18,10 +18,10 @@ export function ensureNumber(id: string) {
 export function convertDbError(e: any) {
   if (e instanceof Prisma.PrismaClientKnownRequestError) {
     if (e.code === 'P2002') {
-      return { error: 'Code must be unique' };
+      return { error: 'code_most_be_unique' };
     }
   }
-  return { error: 'Database error' };
+  return { error: 'db_error' };
 }
 
 export async function isUserAllowedToEdit(quizId: number) {

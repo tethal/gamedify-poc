@@ -8,6 +8,7 @@ import IconButton from '@/components/IconButton';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
+import T from '@/components/T';
 
 export default async function QuizList() {
   const session = await getServerSession(authOptions);
@@ -28,10 +29,18 @@ export default async function QuizList() {
     <table>
       <thead>
         <tr>
-          <th className='p-3 border border-zinc-600'>Code</th>
-          <th className='p-3 border border-zinc-600'>Quiz name</th>
-          <th className='p-3 border border-zinc-600'>Questions</th>
-          <th className='p-3 border border-zinc-600'>Actions</th>
+          <th className='p-3 border border-zinc-600'>
+            <T t='quiz_code' />
+          </th>
+          <th className='p-3 border border-zinc-600'>
+            <T t='quiz_name' />
+          </th>
+          <th className='p-3 border border-zinc-600'>
+            <T t='question_count' />
+          </th>
+          <th className='p-3 border border-zinc-600'>
+            <T t='actions' />
+          </th>
         </tr>
       </thead>
       <tbody>

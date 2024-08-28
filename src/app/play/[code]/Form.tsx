@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { COLORS, type Player } from './defs';
 import Input from '@/components/Input';
+import useTranslation from '@/hooks/useTranslation';
 
 interface FormProps {
   playerOnTurn: Player;
@@ -16,7 +17,7 @@ const Form = ({
   submitAnswer,
 }: FormProps) => {
   const [answer, setAnswer] = useState('');
-
+  const { translate } = useTranslation();
   return (
     <form
       onSubmit={async e => {
@@ -28,19 +29,17 @@ const Form = ({
       <p className='bg-gray-700 size-14 text-2xl flex justify-center items-center font-bold lg:hidden'>
         {tileLabel}
       </p>
-      {/*TODO: dat do tvaru polygonu*/}
       <h2 className='text-2xl p-0'>{question}</h2>
       <Input
         type='text'
-        placeholder='Type an answer'
+        placeholder={translate('type_an_answer')}
         onChange={e => setAnswer(e.target.value)}
         autoFocus
       />
       <button
         className={`border shadow-[0px_0px_3px_#000] rounded-full px-6 py-1.5 text-xl  hover:text-[${COLORS[playerOnTurn]}] hover:border-[${COLORS[playerOnTurn]}]  hover:shadow-[0px_0px_10px_2px_${COLORS[playerOnTurn]}] `}
       >
-        Submit
-        {/* TODO: translate to czech - Odpovedet ?, pripadne spravit celu hru v troch jazykovych permutaciach CZ/SK/EN */}
+        {translate('submit')}
       </button>
     </form>
   );

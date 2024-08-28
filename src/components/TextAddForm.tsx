@@ -7,6 +7,7 @@ import Saving from '@/components/Saving';
 import { useState } from 'react';
 import IconButton from '@/components/IconButton';
 import { MdAdd } from 'react-icons/md';
+import useTranslation from '@/hooks/useTranslation';
 
 interface TextAddFormProps<T> {
   label: string;
@@ -22,6 +23,7 @@ const TextAddForm = <T extends any>({
   action,
   args,
 }: TextAddFormProps<T>) => {
+  const { translate } = useTranslation();
   const [collapsed, setCollapsed] = useState(true);
   const [text, setText] = useState('');
   const { error, isPending, formAction } = useFormAction(async () => {
@@ -43,7 +45,7 @@ const TextAddForm = <T extends any>({
         <form onSubmit={formAction}>
           <div className='grid grid-cols-[auto_1fr_auto] gap-4 p-4'>
             <label htmlFor='name' className='font-bold self-center'>
-              {label}
+              {translate(label)}
             </label>
             <Input
               type='text'
@@ -55,7 +57,7 @@ const TextAddForm = <T extends any>({
             />
             {isPending ? <Saving /> : <SaveButton />}
           </div>
-          <p>{error}</p>
+          <p>{translate(error)}</p>
         </form>
       )}
     </div>
