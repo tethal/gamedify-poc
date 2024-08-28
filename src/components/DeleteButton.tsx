@@ -8,6 +8,7 @@ interface DeleteButtonProps<T> {
   args: T;
 }
 
+
 // TODO confirm dialog
 const DeleteButton = <T extends any>({
   action,
